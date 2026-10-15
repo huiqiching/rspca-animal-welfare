@@ -1,0 +1,520 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Sankey diagram (flow / network idiom), built from scratch in Vega-Lite: where the dogs and cats in RSPCA care across Australia ended up in 2024-25. Left nodes = species, right nodes = outcomes; band thickness = number of animals. Node stacking is computed with window transforms (running totals), and each band is an area mark drawn through 31 points eased with a smoothstep curve. Bands are coloured by species so the reader can follow dogs and cats separately. x/y scales are identity-style (x domain = chart width in pixels; y domain = animals plus gaps).",
+  "width": 820,
+  "height": 430,
+  "data": {
+    "url": "data/rspca_state_species_outcomes_2024_25.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "count": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.species == 'Dogs' || datum.species == 'Cats'"
+    },
+    {
+      "calculate": "datum.outcome == 'Rehomed' ? 'Adopted' : datum.outcome == 'Reclaimed' || datum.outcome == 'Returned' ? 'Back with family' : datum.outcome == 'Currently in care' ? 'Still in care' : datum.outcome == 'Transferred' ? 'Moved to another shelter' : datum.outcome == 'Euthanased' ? 'Put to sleep' : 'Died in care or other'",
+      "as": "target"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "count",
+          "as": "animals"
+        }
+      ],
+      "groupby": [
+        "species",
+        "target"
+      ]
+    },
+    {
+      "calculate": "datum.species == 'Dogs' ? 0 : 1",
+      "as": "src_i"
+    },
+    {
+      "calculate": "indexof(['Adopted', 'Back with family', 'Still in care', 'Moved to another shelter', 'Died in care or other', 'Put to sleep'], datum.target)",
+      "as": "tgt_i"
+    },
+    {
+      "window": [
+        {
+          "op": "sum",
+          "field": "animals",
+          "as": "cum_src"
+        }
+      ],
+      "sort": [
+        {
+          "field": "src_i"
+        },
+        {
+          "field": "tgt_i"
+        }
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "sum",
+          "field": "animals",
+          "as": "cum_tgt"
+        }
+      ],
+      "sort": [
+        {
+          "field": "tgt_i"
+        },
+        {
+          "field": "src_i"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.cum_src + datum.src_i * 1500 + 3000",
+      "as": "s1"
+    },
+    {
+      "calculate": "datum.s1 - datum.animals",
+      "as": "s0"
+    },
+    {
+      "calculate": "datum.cum_tgt + datum.tgt_i * 1500",
+      "as": "t1"
+    },
+    {
+      "calculate": "datum.t1 - datum.animals",
+      "as": "t0"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "animals",
+          "as": "species_total"
+        }
+      ],
+      "groupby": [
+        "species"
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "animals",
+          "as": "outcome_total"
+        }
+      ],
+      "groupby": [
+        "target"
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "animals",
+          "as": "grand_total"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.animals / datum.species_total",
+      "as": "share_of_species"
+    }
+  ],
+  "layer": [
+    {
+      "transform": [
+        {
+          "calculate": "sequence(0, 31)",
+          "as": "k"
+        },
+        {
+          "flatten": [
+            "k"
+          ]
+        },
+        {
+          "calculate": "datum.k / 30",
+          "as": "t"
+        },
+        {
+          "calculate": "datum.t * datum.t * (3 - 2 * datum.t)",
+          "as": "ease"
+        },
+        {
+          "calculate": "164 + datum.t * (556 - 164)",
+          "as": "x"
+        },
+        {
+          "calculate": "datum.s0 + (datum.t0 - datum.s0) * datum.ease",
+          "as": "y_top"
+        },
+        {
+          "calculate": "datum.s1 + (datum.t1 - datum.s1) * datum.ease",
+          "as": "y_bottom"
+        },
+        {
+          "calculate": "datum.species + ' to ' + datum.target",
+          "as": "link"
+        }
+      ],
+      "mark": {
+        "type": "area",
+        "opacity": 0.55,
+        "interpolate": "linear"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [
+              0,
+              820
+            ],
+            "nice": false,
+            "zero": true
+          }
+        },
+        "y": {
+          "field": "y_top",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [
+              0,
+              48991
+            ],
+            "nice": false,
+            "zero": true,
+            "reverse": true
+          }
+        },
+        "y2": {
+          "field": "y_bottom"
+        },
+        "detail": {
+          "field": "link"
+        },
+        "color": {
+          "field": "species",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Dogs",
+              "Cats"
+            ],
+            "range": [
+              "#F5A01A",
+              "#0085CA"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "species",
+            "type": "nominal",
+            "title": "Animal"
+          },
+          {
+            "field": "target",
+            "type": "nominal",
+            "title": "Outcome"
+          },
+          {
+            "field": "animals",
+            "type": "quantitative",
+            "title": "Animals",
+            "format": ",.0f"
+          },
+          {
+            "field": "share_of_species",
+            "type": "quantitative",
+            "title": "Share of all dogs or cats",
+            "format": ".0%"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "min",
+              "field": "s0",
+              "as": "y0"
+            },
+            {
+              "op": "max",
+              "field": "s1",
+              "as": "y1"
+            },
+            {
+              "op": "max",
+              "field": "species_total",
+              "as": "total"
+            }
+          ],
+          "groupby": [
+            "species"
+          ]
+        },
+        {
+          "calculate": "(datum.y0 + datum.y1) / 2",
+          "as": "y_mid"
+        },
+        {
+          "calculate": "[datum.species, format(datum.total, ',.0f')]",
+          "as": "label"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "rect"
+          },
+          "encoding": {
+            "x": {
+              "datum": 150,
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  820
+                ],
+                "nice": false,
+                "zero": true
+              },
+              "axis": null
+            },
+            "x2": {
+              "datum": 164
+            },
+            "y": {
+              "field": "y0",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  48991
+                ],
+                "nice": false,
+                "zero": true,
+                "reverse": true
+              },
+              "axis": null
+            },
+            "y2": {
+              "field": "y1"
+            },
+            "color": {
+              "field": "species",
+              "type": "nominal",
+              "scale": {
+                "domain": [
+                  "Dogs",
+                  "Cats"
+                ],
+                "range": [
+                  "#F5A01A",
+                  "#0085CA"
+                ]
+              },
+              "legend": null
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "dx": -10,
+            "fontSize": 14,
+            "fontWeight": 700,
+            "lineBreak": "\n"
+          },
+          "encoding": {
+            "x": {
+              "datum": 150,
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  820
+                ],
+                "nice": false,
+                "zero": true
+              },
+              "axis": null
+            },
+            "y": {
+              "field": "y_mid",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  48991
+                ],
+                "nice": false,
+                "zero": true,
+                "reverse": true
+              },
+              "axis": null
+            },
+            "text": {
+              "field": "label"
+            },
+            "color": {
+              "value": "#002133"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "min",
+              "field": "t0",
+              "as": "y0"
+            },
+            {
+              "op": "max",
+              "field": "t1",
+              "as": "y1"
+            },
+            {
+              "op": "max",
+              "field": "outcome_total",
+              "as": "total"
+            },
+            {
+              "op": "max",
+              "field": "grand_total",
+              "as": "grand"
+            }
+          ],
+          "groupby": [
+            "target"
+          ]
+        },
+        {
+          "calculate": "(datum.y0 + datum.y1) / 2",
+          "as": "y_mid"
+        },
+        {
+          "calculate": "datum.target + '   ' + format(datum.total, ',.0f') + ' (' + format(datum.total / datum.grand, '.0%') + ')'",
+          "as": "label"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "rect"
+          },
+          "encoding": {
+            "x": {
+              "datum": 556,
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  820
+                ],
+                "nice": false,
+                "zero": true
+              },
+              "axis": null
+            },
+            "x2": {
+              "datum": 570
+            },
+            "y": {
+              "field": "y0",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  48991
+                ],
+                "nice": false,
+                "zero": true,
+                "reverse": true
+              },
+              "axis": null
+            },
+            "y2": {
+              "field": "y1"
+            },
+            "color": {
+              "condition": {
+                "test": "datum.target == 'Put to sleep'",
+                "value": "#4A5A66"
+              },
+              "value": "#002133"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "middle",
+            "dx": 10,
+            "fontSize": 13,
+            "fontWeight": 600
+          },
+          "encoding": {
+            "x": {
+              "datum": 570,
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  820
+                ],
+                "nice": false,
+                "zero": true
+              },
+              "axis": null
+            },
+            "y": {
+              "field": "y_mid",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  48991
+                ],
+                "nice": false,
+                "zero": true,
+                "reverse": true
+              },
+              "axis": null
+            },
+            "text": {
+              "field": "label"
+            },
+            "color": {
+              "value": "#002133"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

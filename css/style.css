@@ -203,4 +203,16 @@ a { color: var(--accent); }
 
 /* small heading used inside a section (e.g. the WA close-up) */
 .sub-heading { font-size: 1.6rem; margin-top: 8px; }
-.wa-intro { margin-top: 64px; align-items: end; }
+.wa-intro { margin-top: 64px; }
+h3.sub-heading.wa-intro { margin-bottom: 16px; }
+/* two paragraphs side by side: tops line up */
+.grid-2.text-pair { align-items: start; margin-bottom: 8px; }
+
+/* closing call to action */
+.closing { background: var(--ink); color: #FFFFFF; }
+.closing h2, .closing h3, .closing .section-number { color: #FFFFFF; }
+.closing .section-number { color: #9FD0EA; }
+.closing p { color: #DCE8F0; }
+.action-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+.action { border-top: 4px solid var(--accent-bright); padding-top: 16px; }
+@media (max-width: 860px) { .action-row { grid-template-columns: 1fr; } }

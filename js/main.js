@@ -63,7 +63,9 @@ const charts = [
   ["#heatmap_reasons",  "js/4b_heatmap_euthanasia_reasons.vg.json"],
   ["#squares_court",    "js/5a_squares_complaint_to_court.vg.json"],
   ["#trend_court",      "js/5b_trend_prosecutions.vg.json"],
-  ["#map_wa",           "js/5c_wa_hotspots_map.vg.json"]
+  ["#map_wa",           "js/5c_wa_hotspots_map.vg.json"],
+  ["#sankey_outcomes",  "js/6a_sankey_outcomes.vg.json"],
+  ["#dotplot_wa",       "js/6b_dotplot_wa_adoption.vg.json"]
 ];
 
 charts.forEach(function ([divId, specPath]) {
