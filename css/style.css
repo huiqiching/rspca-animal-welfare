@@ -217,8 +217,8 @@ h3.sub-heading.wa-intro { margin-bottom: 16px; }
 .action { border-top: 4px solid var(--accent-bright); padding-top: 16px; }
 @media (max-width: 860px) { .action-row { grid-template-columns: 1fr; } }
 
-/* hero facts: the three stats and the Malaysian note share the same left and right edges */
-.hero-facts { width: 100%; }
-.hero-facts .stat-row { grid-template-columns: repeat(3, 1fr); column-gap: 48px; }
+/* hero facts: the three stats use exactly the same grid as the three actions in the closing
+   section (.action-row), and the Malaysian note spans the same full width */
+.hero-facts .stat-row { grid-template-columns: repeat(3, 1fr); gap: 48px; }
 .hero-facts .note { max-width: none; width: 100%; }
 @media (max-width: 860px) { .hero-facts .stat-row { grid-template-columns: 1fr; } }
