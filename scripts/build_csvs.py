@@ -233,7 +233,7 @@ write("derived_state_rates_2024_25.csv",
 # lat/lon = approximate town/council centre, added for proportional-symbol map; verify before use
 WA_LGA = [
  ("Metropolitan", 1, 686, "Swan", 8, 1, -31.89, 116.01),
- ("Metropolitan", 2, 595, "Wanneroo", 13, 2, -31.75, 115.80),
+ ("Metropolitan", 2, 595, "Wanneroo", 13, 2, -31.60, 115.80),
  ("Metropolitan", 3, 399, "Stirling", -9, 3, -31.88, 115.83),
  ("Metropolitan", 4, 395, "Gosnells", 15, 5, -32.08, 116.00),
  ("Metropolitan", 5, 356, "Armadale", -7, 6, -32.15, 116.01),

@@ -200,3 +200,7 @@ a { color: var(--accent); }
   .grid-2, .stat-row { grid-template-columns: 1fr; }
   h1 { font-size: 2.4rem; }
 }
+
+/* small heading used inside a section (e.g. the WA close-up) */
+.sub-heading { font-size: 1.6rem; margin-top: 8px; }
+.wa-intro { margin-top: 64px; align-items: end; }

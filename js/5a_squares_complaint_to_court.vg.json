@@ -1,0 +1,392 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbol chart (Kirk 2019): three nested squares anchored at the bottom-left corner. Each square's AREA is proportional to the number of cases at that stage in 2024-25: complaints investigated, prosecutions finalised, and prosecutions proven in court (facts proved on the principal charge). Totals are summed across states in the spec; NT is not included because RSPCA NT has no enforcement powers. x/y scales are identity (domain = chart size in pixels) so squares can be drawn with exact pixel sides.",
+  "width": 500,
+  "height": 340,
+  "data": {
+    "url": "data/rspca_inspectorate_by_state_2024_25.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "complaints_investigated": "number",
+        "prosecutions_finalised": "number",
+        "successful_prosecutions": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "complaints_investigated",
+          "as": "Complaints investigated"
+        },
+        {
+          "op": "sum",
+          "field": "prosecutions_finalised",
+          "as": "Cases taken to court"
+        },
+        {
+          "op": "sum",
+          "field": "successful_prosecutions",
+          "as": "Cases proven in court"
+        }
+      ]
+    },
+    {
+      "fold": [
+        "Complaints investigated",
+        "Cases taken to court",
+        "Cases proven in court"
+      ],
+      "as": [
+        "stage",
+        "cases"
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "cases",
+          "as": "max_cases"
+        }
+      ]
+    },
+    {
+      "calculate": "300 * sqrt(datum.cases / datum.max_cases)",
+      "as": "side"
+    },
+    {
+      "calculate": "indexof(['Complaints investigated', 'Cases taken to court', 'Cases proven in court'], datum.stage)",
+      "as": "order"
+    },
+    {
+      "calculate": "datum.cases / datum.max_cases",
+      "as": "share_of_complaints"
+    },
+    {
+      "calculate": "340 - datum.side",
+      "as": "top"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "datum": 0,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              500
+            ],
+            "nice": false,
+            "zero": true
+          },
+          "axis": null
+        },
+        "x2": {
+          "field": "side",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "top",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              340
+            ],
+            "nice": false,
+            "zero": true,
+            "reverse": true
+          },
+          "axis": null
+        },
+        "y2": {
+          "datum": 340,
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "stage",
+          "type": "nominal",
+          "sort": [
+            "Complaints investigated",
+            "Cases taken to court",
+            "Cases proven in court"
+          ],
+          "scale": {
+            "range": [
+              "#C6E3F4",
+              "#0072B0",
+              "#002133"
+            ]
+          },
+          "legend": null
+        },
+        "order": {
+          "field": "order",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "stage",
+            "type": "nominal",
+            "title": "Stage"
+          },
+          {
+            "field": "cases",
+            "type": "quantitative",
+            "title": "Cases",
+            "format": ",.0f"
+          },
+          {
+            "field": "share_of_complaints",
+            "type": "quantitative",
+            "title": "Share of complaints",
+            "format": ".2%"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.order == 0"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "fontSize": 15,
+        "fontWeight": 700,
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": {
+          "datum": 14,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              500
+            ],
+            "nice": false,
+            "zero": true
+          },
+          "axis": null
+        },
+        "y": {
+          "datum": 54,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              340
+            ],
+            "nice": false,
+            "zero": true,
+            "reverse": true
+          },
+          "axis": null
+        },
+        "text": {
+          "value": [
+            "55,772",
+            "complaints investigated"
+          ]
+        },
+        "color": {
+          "value": "#002133"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "line": "381 cases taken to court",
+            "detail": "about 7 in every 1,000 complaints",
+            "y": 236,
+            "bold": true
+          },
+          {
+            "line": "264 proven in court",
+            "detail": "about 7 in every 10 court cases",
+            "y": 286,
+            "bold": true
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "fontSize": 13,
+        "fontWeight": 700
+      },
+      "encoding": {
+        "x": {
+          "datum": 314,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              500
+            ],
+            "nice": false,
+            "zero": true
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              340
+            ],
+            "nice": false,
+            "zero": true,
+            "reverse": true
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "line"
+        },
+        "color": {
+          "value": "#002133"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "detail": "about 7 in every 1,000 complaints",
+            "y": 254
+          },
+          {
+            "detail": "about 7 in every 10 court cases",
+            "y": 304
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "fontSize": 12
+      },
+      "encoding": {
+        "x": {
+          "datum": 314,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              500
+            ],
+            "nice": false,
+            "zero": true
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              340
+            ],
+            "nice": false,
+            "zero": true,
+            "reverse": true
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "detail"
+        },
+        "color": {
+          "value": "#4A5A66"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 24.8,
+            "x2": 310,
+            "y": 315.2,
+            "y2": 245
+          },
+          {
+            "x": 20.6,
+            "x2": 310,
+            "y": 330,
+            "y2": 295
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 1,
+        "color": "#4A5A66",
+        "strokeDash": [
+          2,
+          2
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              500
+            ],
+            "nice": false,
+            "zero": true
+          },
+          "axis": null
+        },
+        "x2": {
+          "field": "x2",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              340
+            ],
+            "nice": false,
+            "zero": true,
+            "reverse": true
+          },
+          "axis": null
+        },
+        "y2": {
+          "field": "y2",
+          "type": "quantitative"
+        }
+      }
+    }
+  ]
+}

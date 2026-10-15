@@ -1,0 +1,584 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbol map in two panels: cruelty reports to RSPCA WA in 2023-24 for the 22 local council areas with the most reports (top 10 metropolitan and top 12 regional, as published by RSPCA WA). Left: regional Western Australia, with a box marking the Perth and Peel area. Right: a zoomed-in view (Mercator with a fixed centre and scale; over such a small area the distortion is negligible) of Perth and Peel, where the metropolitan councils sit too close together to read at state scale. Circle AREA = number of reports, on one shared size scale across both panels. Colour = whether reports rose or fell compared with 2022-23 (amber/blue pair is colour-blind safe). Circle positions are approximate council centres. Note: GeoJSON rings must run clockwise for d3/Vega, otherwise the box is read as 'everything except the box'.",
+  "data": {
+    "url": "data/rspcawa_cruelty_reports_top_lga_2023_24.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "reports": "number",
+        "pct_change_vs_2022_23": "number",
+        "approx_lat": "number",
+        "approx_lon": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.pct_change_vs_2022_23 > 0 ? 'More reports than the year before' : 'Fewer reports than the year before'",
+      "as": "trend"
+    },
+    {
+      "calculate": "(datum.pct_change_vs_2022_23 > 0 ? 'Up ' : 'Down ') + abs(datum.pct_change_vs_2022_23) + '% on 2022-23'",
+      "as": "change_label"
+    }
+  ],
+  "spacing": 32,
+  "resolve": {
+    "scale": {
+      "size": "shared",
+      "color": "shared"
+    },
+    "legend": {
+      "size": "shared",
+      "color": "shared"
+    }
+  },
+  "hconcat": [
+    {
+      "title": {
+        "text": "Regional Western Australia",
+        "anchor": "start",
+        "font": "Fraunces",
+        "fontSize": 15,
+        "fontWeight": 600,
+        "color": "#002133"
+      },
+      "width": 430,
+      "height": 470,
+      "projection": {
+        "type": "conicEqualArea",
+        "parallels": [
+          -18,
+          -36
+        ],
+        "rotate": [
+          -132,
+          0,
+          0
+        ]
+      },
+      "layer": [
+        {
+          "data": {
+            "url": "data/australia_states.topojson",
+            "format": {
+              "type": "topojson",
+              "feature": "ne_10m_admin_1_states_provinces"
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.properties.name == 'Western Australia'"
+            }
+          ],
+          "mark": {
+            "type": "geoshape",
+            "fill": "#E6E9EB",
+            "stroke": "#FFFFFF"
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "type": "Feature",
+                "properties": {
+                  "name": "Perth and Peel"
+                },
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        115.55,
+                        -31.45
+                      ],
+                      [
+                        116.25,
+                        -31.45
+                      ],
+                      [
+                        116.25,
+                        -32.75
+                      ],
+                      [
+                        115.55,
+                        -32.75
+                      ],
+                      [
+                        115.55,
+                        -31.45
+                      ]
+                    ]
+                  ]
+                }
+              }
+            ]
+          },
+          "mark": {
+            "type": "geoshape",
+            "fill": null,
+            "stroke": "#002133",
+            "strokeWidth": 1.5,
+            "strokeDash": [
+              4,
+              3
+            ]
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "lon": 116.4,
+                "lat": -31.3,
+                "t": "Perth and Peel (see right)"
+              }
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "fontSize": 12,
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "t"
+            },
+            "color": {
+              "value": "#002133"
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.area_type == 'Regional'"
+            }
+          ],
+          "mark": {
+            "type": "circle",
+            "stroke": "#FFFFFF",
+            "strokeWidth": 1,
+            "opacity": 0.9
+          },
+          "encoding": {
+            "longitude": {
+              "field": "approx_lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "approx_lat",
+              "type": "quantitative"
+            },
+            "size": {
+              "field": "reports",
+              "type": "quantitative",
+              "title": "Cruelty reports",
+              "scale": {
+                "domain": [
+                  0,
+                  700
+                ],
+                "range": [
+                  0,
+                  2400
+                ]
+              },
+              "legend": {
+                "values": [
+                  50,
+                  200,
+                  600
+                ],
+                "orient": "bottom",
+                "direction": "horizontal",
+                "symbolFillColor": "#FFFFFF",
+                "symbolStrokeColor": "#4A5A66"
+              }
+            },
+            "color": {
+              "field": "trend",
+              "type": "nominal",
+              "title": null,
+              "scale": {
+                "domain": [
+                  "More reports than the year before",
+                  "Fewer reports than the year before"
+                ],
+                "range": [
+                  "#F5A01A",
+                  "#0072B0"
+                ]
+              },
+              "legend": {
+                "orient": "bottom",
+                "direction": "horizontal",
+                "symbolType": "circle",
+                "labelLimit": 300
+              }
+            },
+            "order": {
+              "field": "reports",
+              "type": "quantitative",
+              "sort": "descending"
+            },
+            "tooltip": [
+              {
+                "field": "lga",
+                "type": "nominal",
+                "title": "Council"
+              },
+              {
+                "field": "reports",
+                "type": "quantitative",
+                "title": "Cruelty reports, 2023-24",
+                "format": ",.0f"
+              },
+              {
+                "field": "change_label",
+                "type": "nominal",
+                "title": "Change"
+              },
+              {
+                "field": "rank",
+                "type": "quantitative",
+                "title": "Rank among regional councils"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.area_type == 'Regional' && datum.reports >= 110"
+            },
+            {
+              "calculate": "datum.lga == 'Greater Geraldton' ? 'Geraldton' : datum.lga == 'Kalgoorlie-Boulder' ? 'Kalgoorlie' : datum.lga",
+              "as": "short"
+            },
+            {
+              "calculate": "datum.lga == 'Busselton' ? 'right' : datum.lga == 'Bunbury' ? 'right' : 'left'",
+              "as": "side"
+            },
+            {
+              "calculate": "datum.lga == 'Bunbury' ? datum.approx_lon - 0.5 : datum.lga == 'Busselton' ? datum.approx_lon - 0.5 : datum.approx_lon + 0.5",
+              "as": "label_lon"
+            },
+            {
+              "calculate": "datum.lga == 'Busselton' ? datum.approx_lat - 0.3 : datum.lga == 'Bunbury' ? datum.approx_lat + 0.15 : datum.approx_lat",
+              "as": "label_lat"
+            }
+          ],
+          "layer": [
+            {
+              "transform": [
+                {
+                  "filter": "datum.side == 'left'"
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "align": "left",
+                "fontSize": 12,
+                "fontWeight": 600
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "label_lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "label_lat",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "short"
+                },
+                "color": {
+                  "value": "#002133"
+                }
+              }
+            },
+            {
+              "transform": [
+                {
+                  "filter": "datum.side == 'right'"
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "align": "right",
+                "fontSize": 12,
+                "fontWeight": 600
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "label_lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "label_lat",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "short"
+                },
+                "color": {
+                  "value": "#002133"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": {
+        "text": "Perth and Peel",
+        "anchor": "start",
+        "font": "Fraunces",
+        "fontSize": 15,
+        "fontWeight": 600,
+        "color": "#002133"
+      },
+      "width": 430,
+      "height": 470,
+      "projection": {
+        "type": "mercator",
+        "center": [
+          115.92,
+          -32.08
+        ],
+        "scale": 17500,
+        "translate": [
+          215,
+          235
+        ]
+      },
+      "layer": [
+        {
+          "data": {
+            "url": "data/australia_states.topojson",
+            "format": {
+              "type": "topojson",
+              "feature": "ne_10m_admin_1_states_provinces"
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.properties.name == 'Western Australia'"
+            }
+          ],
+          "mark": {
+            "type": "geoshape",
+            "fill": "#E6E9EB",
+            "stroke": "#FFFFFF",
+            "clip": true
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "lon": 115.5,
+                "lat": -31.95,
+                "t": "Indian Ocean"
+              }
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "fontSize": 12,
+            "fontStyle": "italic",
+            "angle": 0
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "t"
+            },
+            "color": {
+              "value": "#7A8C99"
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.area_type == 'Metropolitan'"
+            }
+          ],
+          "mark": {
+            "type": "circle",
+            "stroke": "#FFFFFF",
+            "strokeWidth": 1,
+            "opacity": 0.9
+          },
+          "encoding": {
+            "longitude": {
+              "field": "approx_lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "approx_lat",
+              "type": "quantitative"
+            },
+            "size": {
+              "field": "reports",
+              "type": "quantitative",
+              "title": "Cruelty reports",
+              "scale": {
+                "domain": [
+                  0,
+                  700
+                ],
+                "range": [
+                  0,
+                  2400
+                ]
+              }
+            },
+            "color": {
+              "field": "trend",
+              "type": "nominal",
+              "title": null,
+              "scale": {
+                "domain": [
+                  "More reports than the year before",
+                  "Fewer reports than the year before"
+                ],
+                "range": [
+                  "#F5A01A",
+                  "#0072B0"
+                ]
+              }
+            },
+            "order": {
+              "field": "reports",
+              "type": "quantitative",
+              "sort": "descending"
+            },
+            "tooltip": [
+              {
+                "field": "lga",
+                "type": "nominal",
+                "title": "Council"
+              },
+              {
+                "field": "reports",
+                "type": "quantitative",
+                "title": "Cruelty reports, 2023-24",
+                "format": ",.0f"
+              },
+              {
+                "field": "change_label",
+                "type": "nominal",
+                "title": "Change"
+              },
+              {
+                "field": "rank",
+                "type": "quantitative",
+                "title": "Rank among Perth councils"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.area_type == 'Metropolitan'"
+            },
+            {
+              "calculate": "indexof(['Joondalup', 'Stirling', 'Cockburn', 'Rockingham', 'Mandurah'], datum.lga) >= 0 ? 'left' : 'right'",
+              "as": "side"
+            },
+            {
+              "calculate": "datum.lga + ' ' + format(datum.reports, ',.0f')",
+              "as": "label"
+            }
+          ],
+          "layer": [
+            {
+              "transform": [
+                {
+                  "filter": "datum.side == 'left'"
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "align": "right",
+                "dx": -22,
+                "fontSize": 12,
+                "fontWeight": 600
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "approx_lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "approx_lat",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "label"
+                },
+                "color": {
+                  "value": "#002133"
+                }
+              }
+            },
+            {
+              "transform": [
+                {
+                  "filter": "datum.side == 'right'"
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "align": "left",
+                "dx": 24,
+                "fontSize": 12,
+                "fontWeight": 600
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "approx_lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "approx_lat",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "label"
+                },
+                "color": {
+                  "value": "#002133"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
