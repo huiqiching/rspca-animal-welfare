@@ -216,3 +216,9 @@ h3.sub-heading.wa-intro { margin-bottom: 16px; }
 .action-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
 .action { border-top: 4px solid var(--accent-bright); padding-top: 16px; }
 @media (max-width: 860px) { .action-row { grid-template-columns: 1fr; } }
+
+/* hero facts: the Malaysian note is exactly as wide as the row of three stats */
+.hero-facts { width: fit-content; max-width: 100%; }
+.hero-facts .stat-row { grid-template-columns: repeat(3, minmax(0, 300px)); column-gap: 64px; }
+.hero-facts .note { max-width: none; width: 100%; }
+@media (max-width: 860px) { .hero-facts .stat-row { grid-template-columns: 1fr; } }
