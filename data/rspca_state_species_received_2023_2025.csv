@@ -1,0 +1,97 @@
+fin_year,year_end,state,state_name,species,received
+2023-24,2024,ACT,Australian Capital Territory,Dogs,676
+2023-24,2024,NSW,New South Wales,Dogs,310
+2023-24,2024,NT,Northern Territory,Dogs,4554
+2023-24,2024,QLD,Queensland,Dogs,6531
+2023-24,2024,SA,South Australia,Dogs,1814
+2023-24,2024,TAS,Tasmania,Dogs,130
+2023-24,2024,VIC,Victoria,Dogs,2550
+2023-24,2024,WA,Western Australia,Dogs,903
+2023-24,2024,ACT,Australian Capital Territory,Cats,2065
+2023-24,2024,NSW,New South Wales,Cats,357
+2023-24,2024,NT,Northern Territory,Cats,7007
+2023-24,2024,QLD,Queensland,Cats,7650
+2023-24,2024,SA,South Australia,Cats,3033
+2023-24,2024,TAS,Tasmania,Cats,1063
+2023-24,2024,VIC,Victoria,Cats,4611
+2023-24,2024,WA,Western Australia,Cats,918
+2023-24,2024,ACT,Australian Capital Territory,Horses,0
+2023-24,2024,NSW,New South Wales,Horses,0
+2023-24,2024,NT,Northern Territory,Horses,142
+2023-24,2024,QLD,Queensland,Horses,51
+2023-24,2024,SA,South Australia,Horses,24
+2023-24,2024,TAS,Tasmania,Horses,19
+2023-24,2024,VIC,Victoria,Horses,231
+2023-24,2024,WA,Western Australia,Horses,16
+2023-24,2024,ACT,Australian Capital Territory,Livestock,88
+2023-24,2024,NSW,New South Wales,Livestock,0
+2023-24,2024,NT,Northern Territory,Livestock,406
+2023-24,2024,QLD,Queensland,Livestock,404
+2023-24,2024,SA,South Australia,Livestock,310
+2023-24,2024,TAS,Tasmania,Livestock,2
+2023-24,2024,VIC,Victoria,Livestock,176
+2023-24,2024,WA,Western Australia,Livestock,98
+2023-24,2024,ACT,Australian Capital Territory,Wildlife,205
+2023-24,2024,NSW,New South Wales,Wildlife,0
+2023-24,2024,NT,Northern Territory,Wildlife,468
+2023-24,2024,QLD,Queensland,Wildlife,27423
+2023-24,2024,SA,South Australia,Wildlife,328
+2023-24,2024,TAS,Tasmania,Wildlife,10
+2023-24,2024,VIC,Victoria,Wildlife,650
+2023-24,2024,WA,Western Australia,Wildlife,0
+2023-24,2024,ACT,Australian Capital Territory,Other animals,333
+2023-24,2024,NSW,New South Wales,Other animals,17
+2023-24,2024,NT,Northern Territory,Other animals,1898
+2023-24,2024,QLD,Queensland,Other animals,1931
+2023-24,2024,SA,South Australia,Other animals,489
+2023-24,2024,TAS,Tasmania,Other animals,121
+2023-24,2024,VIC,Victoria,Other animals,1155
+2023-24,2024,WA,Western Australia,Other animals,502
+2024-25,2025,ACT,Australian Capital Territory,Dogs,595
+2024-25,2025,NSW,New South Wales,Dogs,204
+2024-25,2025,NT,Northern Territory,Dogs,3320
+2024-25,2025,QLD,Queensland,Dogs,6401
+2024-25,2025,SA,South Australia,Dogs,1963
+2024-25,2025,TAS,Tasmania,Dogs,379
+2024-25,2025,VIC,Victoria,Dogs,2015
+2024-25,2025,WA,Western Australia,Dogs,975
+2024-25,2025,ACT,Australian Capital Territory,Cats,1935
+2024-25,2025,NSW,New South Wales,Cats,259
+2024-25,2025,NT,Northern Territory,Cats,6621
+2024-25,2025,QLD,Queensland,Cats,8019
+2024-25,2025,SA,South Australia,Cats,3355
+2024-25,2025,TAS,Tasmania,Cats,700
+2024-25,2025,VIC,Victoria,Cats,3830
+2024-25,2025,WA,Western Australia,Cats,920
+2024-25,2025,ACT,Australian Capital Territory,Horses,0
+2024-25,2025,NSW,New South Wales,Horses,0
+2024-25,2025,NT,Northern Territory,Horses,103
+2024-25,2025,QLD,Queensland,Horses,27
+2024-25,2025,SA,South Australia,Horses,66
+2024-25,2025,TAS,Tasmania,Horses,10
+2024-25,2025,VIC,Victoria,Horses,305
+2024-25,2025,WA,Western Australia,Horses,26
+2024-25,2025,ACT,Australian Capital Territory,Livestock,61
+2024-25,2025,NSW,New South Wales,Livestock,2
+2024-25,2025,NT,Northern Territory,Livestock,259
+2024-25,2025,QLD,Queensland,Livestock,509
+2024-25,2025,SA,South Australia,Livestock,279
+2024-25,2025,TAS,Tasmania,Livestock,56
+2024-25,2025,VIC,Victoria,Livestock,96
+2024-25,2025,WA,Western Australia,Livestock,113
+2024-25,2025,ACT,Australian Capital Territory,Wildlife,108
+2024-25,2025,NSW,New South Wales,Wildlife,0
+2024-25,2025,NT,Northern Territory,Wildlife,419
+2024-25,2025,QLD,Queensland,Wildlife,26564
+2024-25,2025,SA,South Australia,Wildlife,361
+2024-25,2025,TAS,Tasmania,Wildlife,0
+2024-25,2025,VIC,Victoria,Wildlife,342
+2024-25,2025,WA,Western Australia,Wildlife,0
+2024-25,2025,ACT,Australian Capital Territory,Other animals,249
+2024-25,2025,NSW,New South Wales,Other animals,0
+2024-25,2025,NT,Northern Territory,Other animals,1688
+2024-25,2025,QLD,Queensland,Other animals,1521
+2024-25,2025,SA,South Australia,Other animals,772
+2024-25,2025,TAS,Tasmania,Other animals,80
+2024-25,2025,VIC,Victoria,Other animals,1601
+2024-25,2025,WA,Western Australia,Other animals,356

@@ -1,0 +1,178 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Slope graph (Kirk 2019: change between two points in time): share of animals euthanased in 2020-21 vs 2024-25, by group. Dogs are highlighted in colour because they are the only group whose rate rose; other groups are muted grey as context.",
+  "width": "container",
+  "height": 300,
+  "padding": {
+    "left": 10,
+    "right": 160,
+    "top": 10
+  },
+  "data": {
+    "url": "data/rspca_national_trend_5yr.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "pct_euthanased": "number",
+        "euthanased": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.fin_year == '2020-21' || datum.fin_year == '2024-25'"
+    },
+    {
+      "calculate": "datum.species_group == 'Dogs' || datum.species_group == 'Cats' ? datum.species_group : 'Wildlife & other'",
+      "as": "group"
+    },
+    {
+      "calculate": "datum.pct_euthanased / 100",
+      "as": "rate"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "fin_year",
+      "type": "ordinal",
+      "title": null,
+      "scale": {
+        "padding": 0.4
+      },
+      "axis": {
+        "labelAngle": 0,
+        "domain": false,
+        "ticks": false,
+        "labelFontWeight": 700,
+        "orient": "top"
+      }
+    },
+    "y": {
+      "field": "rate",
+      "type": "quantitative",
+      "title": null,
+      "scale": {
+        "domain": [
+          0,
+          0.6
+        ]
+      },
+      "axis": null
+    },
+    "color": {
+      "condition": {
+        "test": "datum.group == 'Dogs'",
+        "value": "#F5A01A"
+      },
+      "value": "#A7B1B8"
+    },
+    "detail": {
+      "field": "group"
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line"
+      },
+      "encoding": {
+        "strokeWidth": {
+          "condition": {
+            "test": "datum.group == 'Dogs'",
+            "value": 4
+          },
+          "value": 2
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 90,
+        "opacity": 1
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "group",
+            "type": "nominal",
+            "title": "Group"
+          },
+          {
+            "field": "fin_year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "euthanased",
+            "type": "quantitative",
+            "title": "Put to sleep",
+            "format": ",.0f"
+          },
+          {
+            "field": "rate",
+            "type": "quantitative",
+            "title": "Share put to sleep",
+            "format": ".1%"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.fin_year == '2020-21'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -12,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "rate",
+          "format": ".0%"
+        },
+        "color": {
+          "value": "#002133"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.fin_year == '2024-25'"
+        },
+        {
+          "calculate": "format(datum.rate, '.0%') + '  ' + datum.group",
+          "as": "label"
+        },
+        {
+          "calculate": "datum.group == 'Dogs' ? datum.rate - 0.015 : datum.group == 'Cats' ? datum.rate + 0.015 : datum.rate",
+          "as": "label_y"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 12,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "y": {
+          "field": "label_y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        },
+        "color": {
+          "value": "#002133"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+fin_year,state,state_name,measure,value
+2024-25,ACT,Australian Capital Territory,complaints_investigated,744
+2024-25,NSW,New South Wales,complaints_investigated,16713
+2024-25,QLD,Queensland,complaints_investigated,13874
+2024-25,SA,South Australia,complaints_investigated,5125
+2024-25,TAS,Tasmania,complaints_investigated,1915
+2024-25,VIC,Victoria,complaints_investigated,10206
+2024-25,WA,Western Australia,complaints_investigated,7195
+2024-25,ACT,Australian Capital Territory,prosecutions_finalised,5
+2024-25,NSW,New South Wales,prosecutions_finalised,226
+2024-25,QLD,Queensland,prosecutions_finalised,3
+2024-25,SA,South Australia,prosecutions_finalised,37
+2024-25,TAS,Tasmania,prosecutions_finalised,2
+2024-25,VIC,Victoria,prosecutions_finalised,47
+2024-25,WA,Western Australia,prosecutions_finalised,61
+2024-25,ACT,Australian Capital Territory,successful_prosecutions,5
+2024-25,NSW,New South Wales,successful_prosecutions,119
+2024-25,QLD,Queensland,successful_prosecutions,0
+2024-25,SA,South Australia,successful_prosecutions,32
+2024-25,TAS,Tasmania,successful_prosecutions,2
+2024-25,VIC,Victoria,successful_prosecutions,47
+2024-25,WA,Western Australia,successful_prosecutions,59
+2024-25,ACT,Australian Capital Territory,charges_laid,0
+2024-25,NSW,New South Wales,charges_laid,991
+2024-25,QLD,Queensland,charges_laid,0
+2024-25,SA,South Australia,charges_laid,192
+2024-25,TAS,Tasmania,charges_laid,56
+2024-25,VIC,Victoria,charges_laid,204
+2024-25,WA,Western Australia,charges_laid,165
+2024-25,ACT,Australian Capital Territory,people_charged,5
+2024-25,NSW,New South Wales,people_charged,0
+2024-25,QLD,Queensland,people_charged,3
+2024-25,SA,South Australia,people_charged,44
+2024-25,TAS,Tasmania,people_charged,4
+2024-25,VIC,Victoria,people_charged,49
+2024-25,WA,Western Australia,people_charged,59
+2024-25,ACT,Australian Capital Territory,cases_pending,0
+2024-25,NSW,New South Wales,cases_pending,104
+2024-25,QLD,Queensland,cases_pending,0
+2024-25,SA,South Australia,cases_pending,46
+2024-25,TAS,Tasmania,cases_pending,20
+2024-25,VIC,Victoria,cases_pending,19
+2024-25,WA,Western Australia,cases_pending,46
+2024-25,ACT,Australian Capital Territory,routine_inspections,9
+2024-25,NSW,New South Wales,routine_inspections,49
+2024-25,QLD,Queensland,routine_inspections,0
+2024-25,SA,South Australia,routine_inspections,8
+2024-25,TAS,Tasmania,routine_inspections,31
+2024-25,VIC,Victoria,routine_inspections,12
+2024-25,WA,Western Australia,routine_inspections,0

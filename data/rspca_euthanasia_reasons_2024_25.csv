@@ -1,0 +1,81 @@
+fin_year,state,state_name,species,reason,count
+2024-25,ACT,Australian Capital Territory,Dogs,Infectious,0
+2024-25,NSW,New South Wales,Dogs,Infectious,0
+2024-25,NT,Northern Territory,Dogs,Infectious,6
+2024-25,QLD,Queensland,Dogs,Infectious,28
+2024-25,SA,South Australia,Dogs,Infectious,3
+2024-25,TAS,Tasmania,Dogs,Infectious,0
+2024-25,VIC,Victoria,Dogs,Infectious,4
+2024-25,WA,Western Australia,Dogs,Infectious,22
+2024-25,ACT,Australian Capital Territory,Dogs,Medical,25
+2024-25,NSW,New South Wales,Dogs,Medical,7
+2024-25,NT,Northern Territory,Dogs,Medical,235
+2024-25,QLD,Queensland,Dogs,Medical,410
+2024-25,SA,South Australia,Dogs,Medical,109
+2024-25,TAS,Tasmania,Dogs,Medical,17
+2024-25,VIC,Victoria,Dogs,Medical,97
+2024-25,WA,Western Australia,Dogs,Medical,40
+2024-25,ACT,Australian Capital Territory,Dogs,Behavioural,11
+2024-25,NSW,New South Wales,Dogs,Behavioural,7
+2024-25,NT,Northern Territory,Dogs,Behavioural,627
+2024-25,QLD,Queensland,Dogs,Behavioural,672
+2024-25,SA,South Australia,Dogs,Behavioural,161
+2024-25,TAS,Tasmania,Dogs,Behavioural,3
+2024-25,VIC,Victoria,Dogs,Behavioural,100
+2024-25,WA,Western Australia,Dogs,Behavioural,71
+2024-25,ACT,Australian Capital Territory,Dogs,Legal,0
+2024-25,NSW,New South Wales,Dogs,Legal,0
+2024-25,NT,Northern Territory,Dogs,Legal,2
+2024-25,QLD,Queensland,Dogs,Legal,19
+2024-25,SA,South Australia,Dogs,Legal,20
+2024-25,TAS,Tasmania,Dogs,Legal,0
+2024-25,VIC,Victoria,Dogs,Legal,6
+2024-25,WA,Western Australia,Dogs,Legal,7
+2024-25,ACT,Australian Capital Territory,Dogs,Other,0
+2024-25,NSW,New South Wales,Dogs,Other,0
+2024-25,NT,Northern Territory,Dogs,Other,8
+2024-25,QLD,Queensland,Dogs,Other,4
+2024-25,SA,South Australia,Dogs,Other,10
+2024-25,TAS,Tasmania,Dogs,Other,0
+2024-25,VIC,Victoria,Dogs,Other,3
+2024-25,WA,Western Australia,Dogs,Other,34
+2024-25,ACT,Australian Capital Territory,Cats,Infectious,2
+2024-25,NSW,New South Wales,Cats,Infectious,0
+2024-25,NT,Northern Territory,Cats,Infectious,246
+2024-25,QLD,Queensland,Cats,Infectious,348
+2024-25,SA,South Australia,Cats,Infectious,31
+2024-25,TAS,Tasmania,Cats,Infectious,0
+2024-25,VIC,Victoria,Cats,Infectious,39
+2024-25,WA,Western Australia,Cats,Infectious,0
+2024-25,ACT,Australian Capital Territory,Cats,Medical,69
+2024-25,NSW,New South Wales,Cats,Medical,6
+2024-25,NT,Northern Territory,Cats,Medical,871
+2024-25,QLD,Queensland,Cats,Medical,932
+2024-25,SA,South Australia,Cats,Medical,237
+2024-25,TAS,Tasmania,Cats,Medical,24
+2024-25,VIC,Victoria,Cats,Medical,157
+2024-25,WA,Western Australia,Cats,Medical,83
+2024-25,ACT,Australian Capital Territory,Cats,Behavioural,80
+2024-25,NSW,New South Wales,Cats,Behavioural,3
+2024-25,NT,Northern Territory,Cats,Behavioural,321
+2024-25,QLD,Queensland,Cats,Behavioural,473
+2024-25,SA,South Australia,Cats,Behavioural,383
+2024-25,TAS,Tasmania,Cats,Behavioural,85
+2024-25,VIC,Victoria,Cats,Behavioural,179
+2024-25,WA,Western Australia,Cats,Behavioural,52
+2024-25,ACT,Australian Capital Territory,Cats,Legal,0
+2024-25,NSW,New South Wales,Cats,Legal,0
+2024-25,NT,Northern Territory,Cats,Legal,0
+2024-25,QLD,Queensland,Cats,Legal,2
+2024-25,SA,South Australia,Cats,Legal,0
+2024-25,TAS,Tasmania,Cats,Legal,0
+2024-25,VIC,Victoria,Cats,Legal,47
+2024-25,WA,Western Australia,Cats,Legal,0
+2024-25,ACT,Australian Capital Territory,Cats,Other,0
+2024-25,NSW,New South Wales,Cats,Other,0
+2024-25,NT,Northern Territory,Cats,Other,330
+2024-25,QLD,Queensland,Cats,Other,17
+2024-25,SA,South Australia,Cats,Other,12
+2024-25,TAS,Tasmania,Cats,Other,0
+2024-25,VIC,Victoria,Cats,Other,49
+2024-25,WA,Western Australia,Cats,Other,11

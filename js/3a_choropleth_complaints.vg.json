@@ -1,0 +1,213 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth map: RSPCA cruelty complaints investigated per 10,000 residents by state, 2024-25 (normalised by ABS June 2025 population, as choropleths must show rates, not totals). Equal-area conic projection with standard parallels 18S and 36S. Single-hue blue classes (colour-blind safe). NT has no data because RSPCA NT has no enforcement powers. Note: an empty CSV cell is read as 0, so NT is excluded with complaints_investigated > 0.",
+  "width": "container",
+  "height": 470,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_1_states_provinces"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#E6E9EB",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/australia_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_1_states_provinces"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "data/derived_state_rates_2024_25.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "complaints_per_10k": "number",
+                  "complaints_investigated": "number",
+                  "population": "number",
+                  "prosecutions_finalised": "number"
+                }
+              }
+            },
+            "key": "state_name",
+            "fields": [
+              "state",
+              "complaints_per_10k",
+              "complaints_investigated",
+              "population",
+              "prosecutions_finalised"
+            ]
+          }
+        },
+        {
+          "filter": "datum.complaints_investigated > 0"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "color": {
+          "field": "complaints_per_10k",
+          "type": "quantitative",
+          "title": "Complaints per 10,000 people",
+          "scale": {
+            "type": "threshold",
+            "domain": [
+              15,
+              20,
+              25,
+              30
+            ],
+            "range": [
+              "#E3F2FA",
+              "#9FD0EA",
+              "#40A0D5",
+              "#0072B0",
+              "#002133"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "titleLimit": 400,
+            "labelFontSize": 12
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.name",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "complaints_per_10k",
+            "type": "quantitative",
+            "title": "Complaints per 10,000 people",
+            "format": ".1f"
+          },
+          {
+            "field": "complaints_investigated",
+            "type": "quantitative",
+            "title": "Complaints investigated",
+            "format": ",.0f"
+          },
+          {
+            "field": "prosecutions_finalised",
+            "type": "quantitative",
+            "title": "Prosecutions finalised",
+            "format": ",.0f"
+          },
+          {
+            "field": "population",
+            "type": "quantitative",
+            "title": "Population (June 2025)",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/abs_state_population_2024_2025.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "centroid_lat": "number",
+            "centroid_lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/derived_state_rates_2024_25.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "complaints_per_10k": "number"
+                }
+              }
+            },
+            "key": "state",
+            "fields": [
+              "complaints_per_10k"
+            ]
+          }
+        },
+        {
+          "calculate": "datum.state == 'ACT' ? 152.6 : datum.state == 'TAS' ? 150.4 : datum.centroid_lon",
+          "as": "label_lon"
+        },
+        {
+          "calculate": "datum.state == 'ACT' ? -36.4 : datum.state == 'TAS' ? -42.3 : datum.centroid_lat",
+          "as": "label_lat"
+        },
+        {
+          "calculate": "datum.state + '\\n' + (datum.complaints_per_10k > 0 ? format(datum.complaints_per_10k, '.1f') : 'no data')",
+          "as": "label"
+        },
+        {
+          "calculate": "datum.complaints_per_10k >= 25 && datum.state != 'ACT' && datum.state != 'TAS'",
+          "as": "light_text"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "lineBreak": "\n",
+        "fontSize": 12,
+        "fontWeight": 700
+      },
+      "encoding": {
+        "longitude": {
+          "field": "label_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "label_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.light_text",
+            "value": "#FFFFFF"
+          },
+          "value": "#002133"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbol map: animals received by each state's RSPCA in 2024-25. Two nested circles per state on ONE shared area scale: all animals (light blue) and dogs + cats only (navy). Raw totals belong in symbols, not a choropleth (course notes). Circles sit at each state's approximate centre.",
+  "width": "container",
+  "height": 470,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_1_states_provinces"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#E6E9EB",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/derived_state_rates_2024_25.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "animals_received": "number",
+            "dogs_cats_received": "number",
+            "wildlife_received": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/abs_state_population_2024_2025.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "centroid_lat": "number",
+                  "centroid_lon": "number"
+                }
+              }
+            },
+            "key": "state",
+            "fields": [
+              "centroid_lat",
+              "centroid_lon"
+            ]
+          }
+        },
+        {
+          "fold": [
+            "animals_received",
+            "dogs_cats_received"
+          ],
+          "as": [
+            "measure",
+            "animals"
+          ]
+        },
+        {
+          "calculate": "datum.measure == 'animals_received' ? 'All animals (incl. wildlife)' : 'Dogs and cats only'",
+          "as": "measure_label"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1,
+        "opacity": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "centroid_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "centroid_lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "animals",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "domain": [
+              0,
+              45000
+            ],
+            "range": [
+              0,
+              4200
+            ]
+          },
+          "legend": {
+            "title": "Animals taken in",
+            "values": [
+              1000,
+              10000,
+              40000
+            ],
+            "symbolFillColor": "#FFFFFF",
+            "symbolStrokeColor": "#4A5A66",
+            "orient": "bottom-left",
+            "labelExpr": "format(datum.value, ',.0f')"
+          }
+        },
+        "color": {
+          "field": "measure_label",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "All animals (incl. wildlife)",
+              "Dogs and cats only"
+            ],
+            "range": [
+              "#9FD0EA",
+              "#002133"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top-right",
+            "symbolType": "circle",
+            "labelLimit": 260
+          }
+        },
+        "order": {
+          "field": "animals",
+          "type": "quantitative",
+          "sort": "descending"
+        },
+        "tooltip": [
+          {
+            "field": "state_name",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "measure_label",
+            "type": "nominal",
+            "title": "Circle"
+          },
+          {
+            "field": "animals",
+            "type": "quantitative",
+            "title": "Animals",
+            "format": ",.0f"
+          },
+          {
+            "field": "wildlife_received",
+            "type": "quantitative",
+            "title": "Of which wildlife",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/abs_state_population_2024_2025.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "centroid_lat": "number",
+            "centroid_lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/derived_state_rates_2024_25.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "animals_received": "number"
+                }
+              }
+            },
+            "key": "state",
+            "fields": [
+              "animals_received"
+            ]
+          }
+        },
+        {
+          "calculate": "datum.state == 'ACT' ? 152.6 : datum.centroid_lon",
+          "as": "label_lon"
+        },
+        {
+          "calculate": "datum.state == 'ACT' ? -36.4 : datum.state == 'QLD' ? datum.centroid_lat - 5.2 : datum.centroid_lat - 2.8",
+          "as": "label_lat"
+        },
+        {
+          "calculate": "datum.state + ' ' + (datum.animals_received >= 10000 ? format(datum.animals_received / 1000, '.0f') + 'k' : format(datum.animals_received, ',.0f'))",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 700
+      },
+      "encoding": {
+        "longitude": {
+          "field": "label_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "label_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        },
+        "color": {
+          "value": "#002133"
+        }
+      }
+    }
+  ]
+}

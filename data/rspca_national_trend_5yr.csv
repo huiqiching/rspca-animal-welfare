@@ -1,0 +1,16 @@
+fin_year,year_end,species_group,reclaimed_returned_rehomed_other,euthanased,total_received,pct_euthanased
+2020-21,2021,Dogs,19809,2502,22311,11.21
+2021-22,2022,Dogs,16737,2484,19221,12.92
+2022-23,2023,Dogs,15903,2875,18778,15.31
+2023-24,2024,Dogs,14626,2842,17468,16.27
+2024-25,2025,Dogs,13084,2768,15852,17.46
+2020-21,2021,Cats,33968,8604,42572,20.21
+2021-22,2022,Cats,29065,6506,35571,18.29
+2022-23,2023,Cats,27523,6224,33747,18.44
+2023-24,2024,Cats,21556,5148,26704,19.28
+2024-25,2025,Cats,20550,5089,25639,19.85
+2020-21,2021,"Other animals (incl. wildlife, horses, livestock)",17597,20577,38174,53.9
+2021-22,2022,"Other animals (incl. wildlife, horses, livestock)",18983,21053,40036,52.59
+2022-23,2023,"Other animals (incl. wildlife, horses, livestock)",18228,16712,34940,47.83
+2023-24,2024,"Other animals (incl. wildlife, horses, livestock)",16480,21017,37497,56.05
+2024-25,2025,"Other animals (incl. wildlife, horses, livestock)",16330,19643,35973,54.6

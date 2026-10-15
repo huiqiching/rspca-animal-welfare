@@ -1,0 +1,9 @@
+fin_year,state,state_name,population,animals_received,received_per_10k,dogs_cats_received,dogs_cats_per_10k,wildlife_received,dogs_cats_live_release_pct,dogs_cats_euthanased_pct,complaints_investigated,complaints_per_10k,prosecutions_finalised,prosecutions_per_1000_complaints,pct_change_received_vs_2023_24
+2024-25,ACT,Australian Capital Territory,484800,2948,60.81,2530,52.19,108,90.5,8.1,744,15.35,5,6.72,-12.44
+2024-25,NSW,New South Wales,8593900,465,0.54,463,0.54,0,92.0,6.5,16713,19.45,226,13.52,-32.02
+2024-25,NT,Northern Territory,264400,12410,469.36,9941,375.98,419,66.6,29.8,,,,,-14.27
+2024-25,QLD,Queensland,5669800,43041,75.91,14420,25.43,26564,76.5,21.6,13874,24.47,3,0.22,-2.16
+2024-25,SA,South Australia,1902300,6796,35.73,5318,27.96,361,77.3,19.9,5125,26.94,37,7.22,13.3
+2024-25,TAS,Tasmania,576000,1225,21.27,1079,18.73,0,85.0,14.1,1915,33.25,2,1.04,-8.92
+2024-25,VIC,Victoria,7074500,8189,11.58,5845,8.26,342,81.4,12.8,10206,14.43,47,4.61,-12.63
+2024-25,WA,Western Australia,3043700,2390,7.85,1895,6.23,0,68.3,20.2,7195,23.64,61,8.48,-1.93

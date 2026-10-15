@@ -1,11 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test</title>
+  <title>Who Speaks for the Animals? | RSPCA Animal Welfare in Australia</title>
+
+  <!-- Typefaces: Fraunces (headings, warm and editorial) + Source Sans 3 (body, highly readable) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vega, Vega-Lite and Vega-Embed -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.2"></script>
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <h1>RSPCA Animal Welfare – it works</h1>
+
+  <!-- ============================== HERO ============================== -->
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">RSPCA Animal Welfare in Australia · 2024-25</p>
+      <h1>Who Speaks for the Animals?</h1>
+      <p class="lede">
+        A kitten found shivering in a drain. A kangaroo hit on a country road. A dog handed
+        over by a family who could no longer cope. Every animal that reaches the RSPCA arrives
+        with a story, and last year more than 77,000 of those stories began at a shelter door
+        somewhere in Australia.
+      </p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <span class="stat-number">77,464</span>
+          <span class="stat-label">animals who needed the RSPCA in a single year</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">67,237</span>
+          <span class="stat-label">cruelty complaints followed up by RSPCA inspectors</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">381</span>
+          <span class="stat-label">cruelty cases that ended in court</span>
+        </div>
+      </div>
+
+      <aside class="note">
+        <strong>For Malaysian readers:</strong> Australia is made up of six states and two
+        territories, and each one has its own RSPCA, much like SPCA Selangor and SPCA Penang
+        work independently here at home. The figures cover July 2024 to June 2025.
+      </aside>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== SECTION 1: THE SCALE ===================== -->
+    <section class="section" id="scale">
+      <div class="container grid-2 story">
+        <div class="text">
+          <p class="section-number">01</p>
+          <h2>77,000 lives in a single year</h2>
+          <p>
+            Most of us picture the RSPCA as a place where cats and dogs wait for a family.
+            They are a big part of the story: together, more than half of every animal that
+            came through the doors.
+          </p>
+          <p>
+            But the largest group is the one we rarely think about. <strong>Wildlife.</strong>
+            Possums, birds, kangaroos and koalas, many of them hurt by cars, storms or bushfire.
+            More than one in three animals the RSPCA cared for last year was wild.
+          </p>
+          <p class="caption">Each square stands for 1 in every 100 animals received in 2024-25.</p>
+        </div>
+        <figure class="chart-card">
+          <figcaption>
+            <h3>Who comes through the door?</h3>
+            <p>Animals received by the RSPCA across Australia, 2024-25</p>
+          </figcaption>
+          <div id="waffle_species" class="chart center"></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 2: CHANGE OVER TIME ================== -->
+    <section class="section alt" id="trend">
+      <div class="container">
+        <div class="text columns">
+          <p class="section-number">02</p>
+          <h2>Fewer animals arriving, but a harder road for dogs</h2>
+          <p>
+            Five years ago, the RSPCA took in more than 103,000 animals. Last year it was closer
+            to 77,000, a quarter fewer. Cats saw the biggest change, falling by 40%, in the same
+            years the RSPCA campaigned for desexing and for keeping pet cats safely at home.
+          </p>
+          <p>
+            Dogs tell a quieter, sadder story. Fewer are arriving, yet more of those who do
+            never leave. In 2020-21, about <strong>1 in 9</strong> dogs in RSPCA care was put to
+            sleep. Last year, it was about <strong>1 in 6</strong>.
+          </p>
+        </div>
+        <div class="grid-2">
+          <figure class="chart-card">
+            <figcaption>
+              <h3>Animals arriving each year</h3>
+              <p>By animal group, 2020-21 to 2024-25</p>
+            </figcaption>
+            <div id="trend_received" class="chart"></div>
+          </figure>
+          <figure class="chart-card">
+            <figcaption>
+              <h3>How many did not make it out</h3>
+              <p>Share put to sleep, 2020-21 compared with 2024-25</p>
+            </figcaption>
+            <div id="slope_euthanasia" class="chart"></div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== SECTION 3: GEOGRAPHY ======================= -->
+    <section class="section" id="where">
+      <div class="container">
+        <div class="text columns">
+          <p class="section-number">03</p>
+          <h2>Where an animal lives shapes what happens to it</h2>
+          <p>
+            Each state runs its own RSPCA, and the pressure on every one of them looks different.
+            In some places, neighbours speak up for animals often. In others, a single shelter is
+            asked to carry far more than its share.
+          </p>
+          <p>
+            To keep the comparison fair, the first map counts cruelty complaints for every 10,000
+            people, so a state does not look worse simply because more people live there.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <figure class="chart-card">
+            <figcaption>
+              <h3>How often people speak up for animals</h3>
+              <p>Cruelty complaints per 10,000 people, 2024-25</p>
+            </figcaption>
+            <div id="map_complaints" class="chart"></div>
+            <p class="chart-note">
+              Tasmanians report cruelty at more than twice the rate of Victorians. There is no
+              figure for the Northern Territory, where the government, not the RSPCA, enforces
+              animal cruelty law.
+            </p>
+          </figure>
+          <figure class="chart-card">
+            <figcaption>
+              <h3>How many animals each RSPCA cared for</h3>
+              <p>All animals, and dogs and cats alone, 2024-25</p>
+            </figcaption>
+            <div id="map_received" class="chart"></div>
+            <p class="chart-note">
+              Queensland carries a load unlike anywhere else: 26,564 wild animals, more than 6 in
+              every 10 it took in. New South Wales reported only 465 animals, far fewer than its
+              population suggests, so its figure is incomplete.
+            </p>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= SECTION 4: WHY ANIMALS DON'T MAKE IT ============= -->
+    <section class="section alt" id="euthanasia">
+      <div class="container">
+        <div class="text columns">
+          <p class="section-number">04</p>
+          <h2>Why some animals never go home</h2>
+          <p>
+            Most dogs and cats who enter RSPCA care do leave alive, adopted by a new family or
+            reunited with their own. But their chances depend heavily on where they land.
+          </p>
+          <p>
+            In the ACT, about <strong>9 in 10</strong> walk back out the door. In the Northern
+            Territory and Western Australia, it is closer to <strong>2 in 3</strong>.
+          </p>
+        </div>
+
+        <div class="grid-2 story">
+          <figure class="chart-card">
+            <figcaption>
+              <h3>The odds of leaving alive</h3>
+              <p>Dogs and cats in RSPCA care, by state, 2024-25</p>
+            </figcaption>
+            <div id="dorling_live" class="chart center"></div>
+          </figure>
+          <div class="text">
+            <p>
+              The Northern Territory's shelters face the heaviest pressure in the country. They
+              take in more dogs and cats for every person than anywhere else, and they see the
+              fewest leave alive. When so many animals arrive at once, there are only so many
+              homes to go around.
+            </p>
+            <p>
+              Even the reasons behind each loss differ. Dogs are most often put to sleep because
+              of <strong>behaviour</strong>: fear or aggression that makes them unsafe to rehome.
+              In the Northern Territory, that was the reason for 7 in every 10 dogs lost. Cats
+              are more often lost to <strong>illness or injury</strong> that cannot be treated.
+            </p>
+            <p>
+              Behind every percentage on this page is an animal that simply ran out of options.
+            </p>
+            <p class="caption">
+              Leaving alive means adopted, reclaimed or returned to an owner. NSW is shown in grey
+              because its figures are incomplete.
+            </p>
+          </div>
+        </div>
+
+        <figure class="chart-card wide">
+          <figcaption>
+            <h3>Why dogs and cats are put to sleep</h3>
+            <p>How each state's losses break down by reason, 2024-25</p>
+          </figcaption>
+          <div id="heatmap_reasons" class="chart center"></div>
+          <p class="chart-note">
+            NSW figures come from very few animals (14 dogs and 9 cats), so read them with care.
+          </p>
+        </figure>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================= FOOTER ============================ -->
+  <footer class="footer">
+    <div class="container">
+      <h2>Sources</h2>
+      <ul class="sources">
+        <li>RSPCA Australia (2025). <em>RSPCA National Statistics 2024-2025.</em>
+          <a href="https://www.rspca.org.au/about/annual-statistics/">rspca.org.au/about/annual-statistics</a></li>
+        <li>Australian Bureau of Statistics (2025). <em>Population up 1.5% in June 2025.</em>
+          <a href="https://www.abs.gov.au/media-centre/media-releases/population-15-june-2025">abs.gov.au</a></li>
+        <li>RSPCA WA (2024). <em>RSPCA WA reveals state's animal cruelty hotspots.</em>
+          <a href="https://www.rspcawa.org.au/news/rspca-wa-reveals-states-animal-cruelty-hotspots">rspcawa.org.au</a></li>
+        <li>RSPCA WA (2025). <em>2024-25 Impact Statement.</em>
+          <a href="https://www.rspcawa.org.au/wp-content/uploads/2026/07/2024-25-Impact-Statement.pdf">rspcawa.org.au</a></li>
+        <li>State boundaries: Natural Earth, Admin 1 States and Provinces (1:10m), public domain.
+          <a href="https://www.naturalearthdata.com/">naturalearthdata.com</a></li>
+      </ul>
+      <p class="meta">
+        Created by Ching Hui Qi for FIT3179 Data Visualisation, Monash University Malaysia ·
+        October 2026 · Built with Vega-Lite.
+        Generative AI was used to help extract data tables, draft code and check grammar.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

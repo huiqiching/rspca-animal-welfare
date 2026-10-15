@@ -1,0 +1,309 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dorling cartogram (course notes: area cartograms): each state is a circle whose AREA is proportional to the dogs and cats its RSPCA took in during 2024-25, placed close to the state's real position without overlapping. Vega sizes a circle by its bounding square, so size = 4 * r^2. Colour = live release rate: the share of dogs and cats leaving care that were adopted or returned home. Circle positions were computed offline with a simple overlap-removal layout (see scripts/) and use the same radius formula as below (x/y scales are identity: domain = chart size in pixels): r = 54.5 * sqrt(dogs_cats / 14420). NSW is grey because its figures are incomplete.",
+  "width": 458,
+  "height": 380,
+  "data": {
+    "url": "data/derived_state_rates_2024_25.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "dogs_cats_received": "number",
+        "dogs_cats_live_release_pct": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "lookup": "state",
+      "from": {
+        "data": {
+          "values": [
+            {
+              "state": "WA",
+              "px": 123,
+              "py": 168
+            },
+            {
+              "state": "NT",
+              "px": 220,
+              "py": 110
+            },
+            {
+              "state": "QLD",
+              "px": 329,
+              "py": 141
+            },
+            {
+              "state": "SA",
+              "px": 250,
+              "py": 215
+            },
+            {
+              "state": "NSW",
+              "px": 356,
+              "py": 235
+            },
+            {
+              "state": "ACT",
+              "px": 383,
+              "py": 266
+            },
+            {
+              "state": "VIC",
+              "px": 323,
+              "py": 283
+            },
+            {
+              "state": "TAS",
+              "px": 352,
+              "py": 333
+            }
+          ]
+        },
+        "key": "state",
+        "fields": [
+          "px",
+          "py"
+        ]
+      }
+    },
+    {
+      "calculate": "54.5 * sqrt(datum.dogs_cats_received / 14420)",
+      "as": "radius"
+    },
+    {
+      "calculate": "4 * datum.radius * datum.radius",
+      "as": "area_px"
+    },
+    {
+      "calculate": "datum.dogs_cats_live_release_pct / 100",
+      "as": "live_rate"
+    },
+    {
+      "calculate": "datum.state == 'NSW' ? datum.py - datum.radius - 20 : datum.radius < 19 ? datum.py + datum.radius + 11 : datum.py - 7",
+      "as": "label_y"
+    },
+    {
+      "calculate": "datum.state == 'NSW' ? datum.py - datum.radius - 6 : datum.radius < 19 ? datum.py + datum.radius + 25 : datum.py + 9",
+      "as": "value_y"
+    },
+    {
+      "calculate": "datum.state == 'NSW' ? 'incomplete' : format(datum.live_rate, '.0%')",
+      "as": "value_label"
+    },
+    {
+      "calculate": "datum.radius >= 19 && datum.state != 'NSW' && datum.live_rate >= 0.8",
+      "as": "light_text"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "stroke": "#6B8494",
+        "strokeWidth": 0.8,
+        "opacity": 1
+      },
+      "encoding": {
+        "size": {
+          "field": "area_px",
+          "type": "quantitative",
+          "legend": null,
+          "scale": {
+            "domain": [
+              0,
+              12000
+            ],
+            "range": [
+              0,
+              12000
+            ],
+            "zero": true
+          }
+        },
+        "color": {
+          "condition": {
+            "test": "datum.state == 'NSW'",
+            "value": "#D5DADD"
+          },
+          "field": "live_rate",
+          "type": "quantitative",
+          "title": "Dogs and cats leaving alive",
+          "scale": {
+            "domain": [
+              0.65,
+              0.725,
+              0.8,
+              0.875,
+              0.95
+            ],
+            "range": [
+              "#E3F2FA",
+              "#9FD0EA",
+              "#40A0D5",
+              "#0072B0",
+              "#002133"
+            ],
+            "clamp": true
+          },
+          "legend": {
+            "format": ".0%",
+            "orient": "bottom-left",
+            "direction": "horizontal",
+            "gradientLength": 200,
+            "values": [
+              0.65,
+              0.75,
+              0.85,
+              0.95
+            ],
+            "titleLimit": 300
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state_name",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "dogs_cats_received",
+            "type": "quantitative",
+            "title": "Dogs and cats received",
+            "format": ",.0f"
+          },
+          {
+            "field": "live_rate",
+            "type": "quantitative",
+            "title": "Left care alive",
+            "format": ".1%"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": 700,
+        "fontSize": 13
+      },
+      "encoding": {
+        "y": {
+          "field": "label_y",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [
+              0,
+              380
+            ],
+            "nice": false,
+            "zero": false,
+            "reverse": true
+          }
+        },
+        "text": {
+          "field": "state"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.light_text",
+            "value": "#FFFFFF"
+          },
+          "value": "#002133"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 12
+      },
+      "encoding": {
+        "y": {
+          "field": "value_y",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [
+              0,
+              380
+            ],
+            "nice": false,
+            "zero": false,
+            "reverse": true
+          }
+        },
+        "text": {
+          "field": "value_label"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.light_text",
+            "value": "#FFFFFF"
+          },
+          "value": "#002133"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "t": "Bigger circle = more dogs and cats in care"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "fontSize": 12,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {
+          "field": "t"
+        },
+        "color": {
+          "value": "#4A5A66"
+        },
+        "x": {
+          "value": 454
+        },
+        "y": {
+          "value": 14
+        }
+      }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "px",
+      "type": "quantitative",
+      "axis": null,
+      "scale": {
+        "domain": [
+          0,
+          458
+        ],
+        "nice": false,
+        "zero": false
+      }
+    },
+    "y": {
+      "field": "py",
+      "type": "quantitative",
+      "axis": null,
+      "scale": {
+        "domain": [
+          0,
+          380
+        ],
+        "nice": false,
+        "zero": false,
+        "reverse": true
+      }
+    }
+  }
+}

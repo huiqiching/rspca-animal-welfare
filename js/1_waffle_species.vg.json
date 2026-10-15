@@ -1,0 +1,159 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Waffle chart (Kirk 2019: part-to-whole): 100 squares, each = 1% of animals received by the RSPCA nationally in 2024-25. Horses and livestock (3% combined) are grouped into 'Other animals' so the four main groups stay readable.",
+  "width": 250,
+  "height": 250,
+  "data": {
+    "url": "data/rspca_state_species_received_2023_2025.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "received": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.fin_year == '2024-25'"
+    },
+    {
+      "calculate": "indexof(['Wildlife', 'Cats', 'Dogs'], datum.species) >= 0 ? datum.species : 'Other animals'",
+      "as": "group"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "received",
+          "as": "received"
+        }
+      ],
+      "groupby": [
+        "group"
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "received",
+          "as": "total"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.received / datum.total",
+      "as": "share"
+    },
+    {
+      "calculate": "round(100 * datum.share)",
+      "as": "squares"
+    },
+    {
+      "calculate": "indexof(['Wildlife', 'Cats', 'Dogs', 'Other animals'], datum.group)",
+      "as": "group_order"
+    },
+    {
+      "calculate": "sequence(0, datum.squares)",
+      "as": "square_id"
+    },
+    {
+      "flatten": [
+        "square_id"
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "index"
+        }
+      ],
+      "sort": [
+        {
+          "field": "group_order"
+        },
+        {
+          "field": "square_id"
+        }
+      ]
+    },
+    {
+      "calculate": "(datum.index - 1) % 10",
+      "as": "col"
+    },
+    {
+      "calculate": "floor((datum.index - 1) / 10)",
+      "as": "row"
+    },
+    {
+      "calculate": "datum.group + ' (' + format(datum.share, '.0%') + ')'",
+      "as": "legend_label"
+    }
+  ],
+  "mark": {
+    "type": "rect",
+    "cornerRadius": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "col",
+      "type": "ordinal",
+      "axis": null,
+      "scale": {
+        "paddingInner": 0.15
+      }
+    },
+    "y": {
+      "field": "row",
+      "type": "ordinal",
+      "axis": null,
+      "scale": {
+        "paddingInner": 0.15
+      }
+    },
+    "color": {
+      "field": "legend_label",
+      "type": "nominal",
+      "sort": {
+        "field": "group_order",
+        "op": "min"
+      },
+      "scale": {
+        "range": [
+          "#3B7F2A",
+          "#0085CA",
+          "#F5A01A",
+          "#C9C9C9"
+        ]
+      },
+      "legend": {
+        "title": null,
+        "orient": "right",
+        "symbolType": "square",
+        "symbolSize": 160,
+        "labelFontSize": 13,
+        "labelLimit": 260
+      }
+    },
+    "tooltip": [
+      {
+        "field": "group",
+        "type": "nominal",
+        "title": "Animal type"
+      },
+      {
+        "field": "received",
+        "type": "quantitative",
+        "title": "Animals arriving",
+        "format": ",.0f"
+      },
+      {
+        "field": "share",
+        "type": "quantitative",
+        "title": "Share of all animals",
+        "format": ".1%"
+      }
+    ]
+  }
+}

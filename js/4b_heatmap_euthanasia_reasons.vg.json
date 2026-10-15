@@ -1,0 +1,188 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heat map (Kirk 2019: values across two categorical dimensions), two panels for dogs and cats: share of each state's euthanased animals by reason, 2024-25. Rows = states (sorted by number euthanased), columns = reasons. Single-hue blue scale plus printed percentages, so it is readable without relying on colour.",
+  "data": {
+    "url": "data/rspca_euthanasia_reasons_2024_25.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "count": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "count",
+          "as": "state_total"
+        }
+      ],
+      "groupby": [
+        "state",
+        "species"
+      ]
+    },
+    {
+      "calculate": "datum.state_total > 0 ? datum.count / datum.state_total : 0",
+      "as": "share"
+    },
+    {
+      "calculate": "datum.state + ' (' + format(datum.state_total, ',.0f') + ')'",
+      "as": "state_label"
+    }
+  ],
+  "facet": {
+    "column": {
+      "field": "species",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "Dogs",
+        "Cats"
+      ],
+      "header": {
+        "labelAnchor": "start"
+      }
+    }
+  },
+  "spacing": 48,
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  },
+  "spec": {
+    "width": 400,
+    "height": 280,
+    "encoding": {
+      "x": {
+        "field": "reason",
+        "type": "nominal",
+        "title": null,
+        "sort": [
+          "Behavioural",
+          "Medical",
+          "Infectious",
+          "Legal",
+          "Other"
+        ],
+        "axis": {
+          "orient": "top",
+          "labelAngle": 0,
+          "domain": false,
+          "ticks": false,
+          "labelFontWeight": 600
+        }
+      },
+      "y": {
+        "field": "state_label",
+        "type": "nominal",
+        "title": "State (animals put to sleep)",
+        "sort": {
+          "field": "state_total",
+          "op": "max",
+          "order": "descending"
+        },
+        "axis": {
+          "domain": false,
+          "ticks": false
+        }
+      }
+    },
+    "layer": [
+      {
+        "mark": {
+          "type": "rect",
+          "stroke": "#FFFFFF",
+          "strokeWidth": 2,
+          "cornerRadius": 2
+        },
+        "encoding": {
+          "color": {
+            "field": "share",
+            "type": "quantitative",
+            "title": "Share of that state's losses",
+            "scale": {
+              "domain": [
+                0,
+                0.25,
+                0.5,
+                0.75,
+                1
+              ],
+              "range": [
+                "#F1F8FC",
+                "#9FD0EA",
+                "#40A0D5",
+                "#0072B0",
+                "#002133"
+              ]
+            },
+            "legend": {
+              "format": ".0%",
+              "orient": "bottom",
+              "direction": "horizontal",
+              "gradientLength": 240
+            }
+          },
+          "tooltip": [
+            {
+              "field": "state_name",
+              "type": "nominal",
+              "title": "State"
+            },
+            {
+              "field": "species",
+              "type": "nominal",
+              "title": "Animal"
+            },
+            {
+              "field": "reason",
+              "type": "nominal",
+              "title": "Reason"
+            },
+            {
+              "field": "count",
+              "type": "quantitative",
+              "title": "Animals put to sleep",
+              "format": ",.0f"
+            },
+            {
+              "field": "share",
+              "type": "quantitative",
+              "title": "Share of state total",
+              "format": ".0%"
+            }
+          ]
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.count > 0"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "fontSize": 12
+        },
+        "encoding": {
+          "text": {
+            "field": "share",
+            "type": "quantitative",
+            "format": ".0%"
+          },
+          "color": {
+            "condition": {
+              "test": "datum.share > 0.55",
+              "value": "#FFFFFF"
+            },
+            "value": "#002133"
+          }
+        }
+      }
+    ]
+  }
+}

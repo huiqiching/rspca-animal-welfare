@@ -1,0 +1,202 @@
+/* =====================================================================
+   RSPCA Animal Welfare, FIT3179 DV2
+   Colour tokens, typography and layout for the whole page.
+   ===================================================================== */
+
+:root {
+  /* Colours taken from the RSPCA Australia website (rspca.org.au) */
+  --bg: #FFFEFC;          /* RSPCA off-white */
+  --bg-alt: #EEF6FB;      /* very light RSPCA blue band */
+  --card: #FFFFFF;
+  --ink: #002133;         /* RSPCA navy, main text */
+  --ink-soft: #4A5A66;    /* secondary text */
+  --rule: #DCE3E8;
+  --accent: #006BA6;      /* RSPCA blue, darkened slightly so text passes contrast checks */
+  --accent-bright: #0085CA; /* RSPCA blue, borders and decoration only */
+
+  /* animal-group palette, must match the chart specs (colour-blind checked) */
+  --wildlife: #3B7F2A;    /* darker RSPCA green */
+  --cats: #0085CA;        /* RSPCA blue */
+  --dogs: #F5A01A;        /* RSPCA amber */
+  --other: #C9C9C9;
+
+  --heading: "Fraunces", Georgia, serif;
+  --body: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+/* ----------------------------- layout ----------------------------- */
+
+.container {
+  max-width: 1360px;       /* wide on big screens; shrinks to fit a small laptop (no horizontal scroll) */
+  margin: 0 auto;
+  padding: 0 56px;
+}
+
+.section { padding: 88px 0; }
+.section.alt { background: var(--bg-alt); }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* text beside a chart: centre it vertically against the chart */
+.grid-2.story { align-items: center; }
+
+.text.narrow { max-width: 900px; margin-bottom: 40px; }
+.text p { max-width: 68ch; }   /* comfortable line length */
+
+/* intro text split into two columns on wide screens, so it fills the width */
+.text.columns { column-count: 2; column-gap: 56px; max-width: none; margin-bottom: 40px; }
+.text.columns p { break-inside: avoid; max-width: none; }
+.text.columns h2, .text.columns .section-number { column-span: all; }
+
+/* --------------------------- typography --------------------------- */
+
+h1, h2, h3 {
+  font-family: var(--heading);
+  line-height: 1.15;
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+
+h1 { font-size: 3.4rem; font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 2.3rem; font-weight: 600; max-width: 26ch; }
+h3 { font-size: 1.2rem; font-weight: 600; }
+
+p { margin: 0 0 16px; }
+
+strong { color: var(--accent); font-weight: 700; }
+
+a { color: var(--accent); }
+
+.eyebrow,
+.section-number {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.caption,
+.chart-note {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* ------------------------------ hero ------------------------------ */
+
+.hero {
+  padding: 96px 0 64px;
+  background: linear-gradient(180deg, #EEF6FB 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--rule);
+}
+
+.lede {
+  font-size: 1.4rem;
+  max-width: 52ch;
+  color: var(--ink-soft);
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin: 48px 0 40px;
+}
+
+.stat {
+  border-top: 4px solid var(--accent-bright);
+  padding-top: 12px;
+}
+
+.stat-number {
+  display: block;
+  font-family: var(--heading);
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.stat-label { font-size: 0.95rem; color: var(--ink-soft); }
+
+.note {
+  background: var(--bg-alt);
+  border-left: 4px solid var(--accent-bright);
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-size: 1rem;
+  max-width: 900px;
+}
+
+.note strong { color: var(--ink); }
+
+/* ----------------------------- charts ----------------------------- */
+
+.chart-card {
+  margin: 0;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 24px 28px;
+}
+
+.chart-card.wide { margin-top: 48px; }
+
+.chart-card figcaption p {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.chart { width: 100%; }   /* needed for "width": "container" specs */
+.chart.center { text-align: center; }   /* centres fixed-width charts in their card */
+
+/* Vega tooltips: match page typography */
+#vg-tooltip-element {
+  font-family: var(--body);
+  font-size: 14px;
+}
+
+/* ----------------------------- footer ----------------------------- */
+
+.footer {
+  padding: 56px 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.footer h2 { font-size: 1.3rem; }
+.sources { padding-left: 18px; }
+.sources li { margin-bottom: 6px; }
+.meta { margin-top: 24px; }
+
+/* --------------------- smaller screens (backup) -------------------- */
+
+@media (max-width: 1100px) {
+  .container { padding: 0 32px; }
+  .text.columns { column-count: 1; }
+}
+
+@media (max-width: 860px) {
+  .grid-2, .stat-row { grid-template-columns: 1fr; }
+  h1 { font-size: 2.4rem; }
+}

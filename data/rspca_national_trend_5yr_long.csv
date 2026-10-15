@@ -1,0 +1,31 @@
+fin_year,year_end,species_group,outcome,count
+2020-21,2021,Dogs,Live/other outcome,19809
+2021-22,2022,Dogs,Live/other outcome,16737
+2022-23,2023,Dogs,Live/other outcome,15903
+2023-24,2024,Dogs,Live/other outcome,14626
+2024-25,2025,Dogs,Live/other outcome,13084
+2020-21,2021,Dogs,Euthanased,2502
+2021-22,2022,Dogs,Euthanased,2484
+2022-23,2023,Dogs,Euthanased,2875
+2023-24,2024,Dogs,Euthanased,2842
+2024-25,2025,Dogs,Euthanased,2768
+2020-21,2021,Cats,Live/other outcome,33968
+2021-22,2022,Cats,Live/other outcome,29065
+2022-23,2023,Cats,Live/other outcome,27523
+2023-24,2024,Cats,Live/other outcome,21556
+2024-25,2025,Cats,Live/other outcome,20550
+2020-21,2021,Cats,Euthanased,8604
+2021-22,2022,Cats,Euthanased,6506
+2022-23,2023,Cats,Euthanased,6224
+2023-24,2024,Cats,Euthanased,5148
+2024-25,2025,Cats,Euthanased,5089
+2020-21,2021,"Other animals (incl. wildlife, horses, livestock)",Live/other outcome,17597
+2021-22,2022,"Other animals (incl. wildlife, horses, livestock)",Live/other outcome,18983
+2022-23,2023,"Other animals (incl. wildlife, horses, livestock)",Live/other outcome,18228
+2023-24,2024,"Other animals (incl. wildlife, horses, livestock)",Live/other outcome,16480
+2024-25,2025,"Other animals (incl. wildlife, horses, livestock)",Live/other outcome,16330
+2020-21,2021,"Other animals (incl. wildlife, horses, livestock)",Euthanased,20577
+2021-22,2022,"Other animals (incl. wildlife, horses, livestock)",Euthanased,21053
+2022-23,2023,"Other animals (incl. wildlife, horses, livestock)",Euthanased,16712
+2023-24,2024,"Other animals (incl. wildlife, horses, livestock)",Euthanased,21017
+2024-25,2025,"Other animals (incl. wildlife, horses, livestock)",Euthanased,19643

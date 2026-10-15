@@ -1,0 +1,321 @@
+fin_year,year_end,state,state_name,species,outcome,outcome_group,outcome_order,count
+2024-25,2025,ACT,Australian Capital Territory,Dogs,Reclaimed,Live outcome,2,109
+2024-25,2025,NSW,New South Wales,Dogs,Reclaimed,Live outcome,2,0
+2024-25,2025,NT,Northern Territory,Dogs,Reclaimed,Live outcome,2,229
+2024-25,2025,QLD,Queensland,Dogs,Reclaimed,Live outcome,2,1647
+2024-25,2025,SA,South Australia,Dogs,Reclaimed,Live outcome,2,501
+2024-25,2025,TAS,Tasmania,Dogs,Reclaimed,Live outcome,2,0
+2024-25,2025,VIC,Victoria,Dogs,Reclaimed,Live outcome,2,646
+2024-25,2025,WA,Western Australia,Dogs,Reclaimed,Live outcome,2,71
+2024-25,2025,ACT,Australian Capital Territory,Dogs,Returned,Live outcome,3,75
+2024-25,2025,NSW,New South Wales,Dogs,Returned,Live outcome,3,18
+2024-25,2025,NT,Northern Territory,Dogs,Returned,Live outcome,3,243
+2024-25,2025,QLD,Queensland,Dogs,Returned,Live outcome,3,204
+2024-25,2025,SA,South Australia,Dogs,Returned,Live outcome,3,33
+2024-25,2025,TAS,Tasmania,Dogs,Returned,Live outcome,3,48
+2024-25,2025,VIC,Victoria,Dogs,Returned,Live outcome,3,83
+2024-25,2025,WA,Western Australia,Dogs,Returned,Live outcome,3,23
+2024-25,2025,ACT,Australian Capital Territory,Dogs,Rehomed,Live outcome,1,310
+2024-25,2025,NSW,New South Wales,Dogs,Rehomed,Live outcome,1,119
+2024-25,2025,NT,Northern Territory,Dogs,Rehomed,Live outcome,1,1350
+2024-25,2025,QLD,Queensland,Dogs,Rehomed,Live outcome,1,2922
+2024-25,2025,SA,South Australia,Dogs,Rehomed,Live outcome,1,867
+2024-25,2025,TAS,Tasmania,Dogs,Rehomed,Live outcome,1,220
+2024-25,2025,VIC,Victoria,Dogs,Rehomed,Live outcome,1,704
+2024-25,2025,WA,Western Australia,Dogs,Rehomed,Live outcome,1,347
+2024-25,2025,ACT,Australian Capital Territory,Dogs,Currently in care,Still in care,5,60
+2024-25,2025,NSW,New South Wales,Dogs,Currently in care,Still in care,5,53
+2024-25,2025,NT,Northern Territory,Dogs,Currently in care,Still in care,5,442
+2024-25,2025,QLD,Queensland,Dogs,Currently in care,Still in care,5,397
+2024-25,2025,SA,South Australia,Dogs,Currently in care,Still in care,5,204
+2024-25,2025,TAS,Tasmania,Dogs,Currently in care,Still in care,5,91
+2024-25,2025,VIC,Victoria,Dogs,Currently in care,Still in care,5,199
+2024-25,2025,WA,Western Australia,Dogs,Currently in care,Still in care,5,226
+2024-25,2025,ACT,Australian Capital Territory,Dogs,Transferred,Transferred,6,5
+2024-25,2025,NSW,New South Wales,Dogs,Transferred,Transferred,6,0
+2024-25,2025,NT,Northern Territory,Dogs,Transferred,Transferred,6,162
+2024-25,2025,QLD,Queensland,Dogs,Transferred,Transferred,6,63
+2024-25,2025,SA,South Australia,Dogs,Transferred,Transferred,6,49
+2024-25,2025,TAS,Tasmania,Dogs,Transferred,Transferred,6,0
+2024-25,2025,VIC,Victoria,Dogs,Transferred,Transferred,6,159
+2024-25,2025,WA,Western Australia,Dogs,Transferred,Transferred,6,91
+2024-25,2025,ACT,Australian Capital Territory,Dogs,Euthanased,Euthanased,8,36
+2024-25,2025,NSW,New South Wales,Dogs,Euthanased,Euthanased,8,14
+2024-25,2025,NT,Northern Territory,Dogs,Euthanased,Euthanased,8,878
+2024-25,2025,QLD,Queensland,Dogs,Euthanased,Euthanased,8,1133
+2024-25,2025,SA,South Australia,Dogs,Euthanased,Euthanased,8,303
+2024-25,2025,TAS,Tasmania,Dogs,Euthanased,Euthanased,8,20
+2024-25,2025,VIC,Victoria,Dogs,Euthanased,Euthanased,8,210
+2024-25,2025,WA,Western Australia,Dogs,Euthanased,Euthanased,8,174
+2024-25,2025,ACT,Australian Capital Territory,Dogs,Other,Other (incl. died in care),7,0
+2024-25,2025,NSW,New South Wales,Dogs,Other,Other (incl. died in care),7,0
+2024-25,2025,NT,Northern Territory,Dogs,Other,Other (incl. died in care),7,16
+2024-25,2025,QLD,Queensland,Dogs,Other,Other (incl. died in care),7,35
+2024-25,2025,SA,South Australia,Dogs,Other,Other (incl. died in care),7,6
+2024-25,2025,TAS,Tasmania,Dogs,Other,Other (incl. died in care),7,0
+2024-25,2025,VIC,Victoria,Dogs,Other,Other (incl. died in care),7,14
+2024-25,2025,WA,Western Australia,Dogs,Other,Other (incl. died in care),7,43
+2024-25,2025,ACT,Australian Capital Territory,Cats,Reclaimed,Live outcome,2,120
+2024-25,2025,NSW,New South Wales,Cats,Reclaimed,Live outcome,2,1
+2024-25,2025,NT,Northern Territory,Cats,Reclaimed,Live outcome,2,122
+2024-25,2025,QLD,Queensland,Cats,Reclaimed,Live outcome,2,443
+2024-25,2025,SA,South Australia,Cats,Reclaimed,Live outcome,2,117
+2024-25,2025,TAS,Tasmania,Cats,Reclaimed,Live outcome,2,0
+2024-25,2025,VIC,Victoria,Cats,Reclaimed,Live outcome,2,157
+2024-25,2025,WA,Western Australia,Cats,Reclaimed,Live outcome,2,19
+2024-25,2025,ACT,Australian Capital Territory,Cats,Returned,Live outcome,3,33
+2024-25,2025,NSW,New South Wales,Cats,Returned,Live outcome,3,0
+2024-25,2025,NT,Northern Territory,Cats,Returned,Live outcome,3,116
+2024-25,2025,QLD,Queensland,Cats,Returned,Live outcome,3,99
+2024-25,2025,SA,South Australia,Cats,Returned,Live outcome,3,51
+2024-25,2025,TAS,Tasmania,Cats,Returned,Live outcome,3,22
+2024-25,2025,VIC,Victoria,Cats,Returned,Live outcome,3,39
+2024-25,2025,WA,Western Australia,Cats,Returned,Live outcome,3,21
+2024-25,2025,ACT,Australian Capital Territory,Cats,Rehomed,Live outcome,1,1433
+2024-25,2025,NSW,New South Wales,Cats,Rehomed,Live outcome,1,186
+2024-25,2025,NT,Northern Territory,Cats,Rehomed,Live outcome,1,3863
+2024-25,2025,QLD,Queensland,Cats,Rehomed,Live outcome,1,4992
+2024-25,2025,SA,South Australia,Cats,Rehomed,Live outcome,1,2191
+2024-25,2025,TAS,Tasmania,Cats,Rehomed,Live outcome,1,488
+2024-25,2025,VIC,Victoria,Cats,Rehomed,Live outcome,1,2688
+2024-25,2025,WA,Western Australia,Cats,Rehomed,Live outcome,1,604
+2024-25,2025,ACT,Australian Capital Territory,Cats,Currently in care,Still in care,5,171
+2024-25,2025,NSW,New South Wales,Cats,Currently in care,Still in care,5,58
+2024-25,2025,NT,Northern Territory,Cats,Currently in care,Still in care,5,607
+2024-25,2025,QLD,Queensland,Cats,Currently in care,Still in care,5,543
+2024-25,2025,SA,South Australia,Cats,Currently in care,Still in care,5,251
+2024-25,2025,TAS,Tasmania,Cats,Currently in care,Still in care,5,73
+2024-25,2025,VIC,Victoria,Cats,Currently in care,Still in care,5,344
+2024-25,2025,WA,Western Australia,Cats,Currently in care,Still in care,5,81
+2024-25,2025,ACT,Australian Capital Territory,Cats,Transferred,Transferred,6,2
+2024-25,2025,NSW,New South Wales,Cats,Transferred,Transferred,6,2
+2024-25,2025,NT,Northern Territory,Cats,Transferred,Transferred,6,40
+2024-25,2025,QLD,Queensland,Cats,Transferred,Transferred,6,87
+2024-25,2025,SA,South Australia,Cats,Transferred,Transferred,6,58
+2024-25,2025,TAS,Tasmania,Cats,Transferred,Transferred,6,0
+2024-25,2025,VIC,Victoria,Cats,Transferred,Transferred,6,81
+2024-25,2025,WA,Western Australia,Cats,Transferred,Transferred,6,28
+2024-25,2025,ACT,Australian Capital Territory,Cats,Euthanased,Euthanased,8,151
+2024-25,2025,NSW,New South Wales,Cats,Euthanased,Euthanased,8,9
+2024-25,2025,NT,Northern Territory,Cats,Euthanased,Euthanased,8,1768
+2024-25,2025,QLD,Queensland,Cats,Euthanased,Euthanased,8,1772
+2024-25,2025,SA,South Australia,Cats,Euthanased,Euthanased,8,663
+2024-25,2025,TAS,Tasmania,Cats,Euthanased,Euthanased,8,109
+2024-25,2025,VIC,Victoria,Cats,Euthanased,Euthanased,8,471
+2024-25,2025,WA,Western Australia,Cats,Euthanased,Euthanased,8,146
+2024-25,2025,ACT,Australian Capital Territory,Cats,Other,Other (incl. died in care),7,25
+2024-25,2025,NSW,New South Wales,Cats,Other,Other (incl. died in care),7,3
+2024-25,2025,NT,Northern Territory,Cats,Other,Other (incl. died in care),7,105
+2024-25,2025,QLD,Queensland,Cats,Other,Other (incl. died in care),7,83
+2024-25,2025,SA,South Australia,Cats,Other,Other (incl. died in care),7,24
+2024-25,2025,TAS,Tasmania,Cats,Other,Other (incl. died in care),7,8
+2024-25,2025,VIC,Victoria,Cats,Other,Other (incl. died in care),7,50
+2024-25,2025,WA,Western Australia,Cats,Other,Other (incl. died in care),7,21
+2024-25,2025,ACT,Australian Capital Territory,Horses,Reclaimed,Live outcome,2,0
+2024-25,2025,NSW,New South Wales,Horses,Reclaimed,Live outcome,2,0
+2024-25,2025,NT,Northern Territory,Horses,Reclaimed,Live outcome,2,0
+2024-25,2025,QLD,Queensland,Horses,Reclaimed,Live outcome,2,2
+2024-25,2025,SA,South Australia,Horses,Reclaimed,Live outcome,2,0
+2024-25,2025,TAS,Tasmania,Horses,Reclaimed,Live outcome,2,0
+2024-25,2025,VIC,Victoria,Horses,Reclaimed,Live outcome,2,0
+2024-25,2025,WA,Western Australia,Horses,Reclaimed,Live outcome,2,0
+2024-25,2025,ACT,Australian Capital Territory,Horses,Returned,Live outcome,3,0
+2024-25,2025,NSW,New South Wales,Horses,Returned,Live outcome,3,0
+2024-25,2025,NT,Northern Territory,Horses,Returned,Live outcome,3,1
+2024-25,2025,QLD,Queensland,Horses,Returned,Live outcome,3,2
+2024-25,2025,SA,South Australia,Horses,Returned,Live outcome,3,0
+2024-25,2025,TAS,Tasmania,Horses,Returned,Live outcome,3,0
+2024-25,2025,VIC,Victoria,Horses,Returned,Live outcome,3,2
+2024-25,2025,WA,Western Australia,Horses,Returned,Live outcome,3,0
+2024-25,2025,ACT,Australian Capital Territory,Horses,Rehomed,Live outcome,1,0
+2024-25,2025,NSW,New South Wales,Horses,Rehomed,Live outcome,1,0
+2024-25,2025,NT,Northern Territory,Horses,Rehomed,Live outcome,1,31
+2024-25,2025,QLD,Queensland,Horses,Rehomed,Live outcome,1,8
+2024-25,2025,SA,South Australia,Horses,Rehomed,Live outcome,1,0
+2024-25,2025,TAS,Tasmania,Horses,Rehomed,Live outcome,1,2
+2024-25,2025,VIC,Victoria,Horses,Rehomed,Live outcome,1,131
+2024-25,2025,WA,Western Australia,Horses,Rehomed,Live outcome,1,6
+2024-25,2025,ACT,Australian Capital Territory,Horses,Currently in care,Still in care,5,0
+2024-25,2025,NSW,New South Wales,Horses,Currently in care,Still in care,5,0
+2024-25,2025,NT,Northern Territory,Horses,Currently in care,Still in care,5,44
+2024-25,2025,QLD,Queensland,Horses,Currently in care,Still in care,5,9
+2024-25,2025,SA,South Australia,Horses,Currently in care,Still in care,5,39
+2024-25,2025,TAS,Tasmania,Horses,Currently in care,Still in care,5,3
+2024-25,2025,VIC,Victoria,Horses,Currently in care,Still in care,5,69
+2024-25,2025,WA,Western Australia,Horses,Currently in care,Still in care,5,17
+2024-25,2025,ACT,Australian Capital Territory,Horses,Transferred,Transferred,6,0
+2024-25,2025,NSW,New South Wales,Horses,Transferred,Transferred,6,0
+2024-25,2025,NT,Northern Territory,Horses,Transferred,Transferred,6,1
+2024-25,2025,QLD,Queensland,Horses,Transferred,Transferred,6,1
+2024-25,2025,SA,South Australia,Horses,Transferred,Transferred,6,18
+2024-25,2025,TAS,Tasmania,Horses,Transferred,Transferred,6,0
+2024-25,2025,VIC,Victoria,Horses,Transferred,Transferred,6,34
+2024-25,2025,WA,Western Australia,Horses,Transferred,Transferred,6,1
+2024-25,2025,ACT,Australian Capital Territory,Horses,Euthanased,Euthanased,8,0
+2024-25,2025,NSW,New South Wales,Horses,Euthanased,Euthanased,8,0
+2024-25,2025,NT,Northern Territory,Horses,Euthanased,Euthanased,8,24
+2024-25,2025,QLD,Queensland,Horses,Euthanased,Euthanased,8,5
+2024-25,2025,SA,South Australia,Horses,Euthanased,Euthanased,8,9
+2024-25,2025,TAS,Tasmania,Horses,Euthanased,Euthanased,8,5
+2024-25,2025,VIC,Victoria,Horses,Euthanased,Euthanased,8,67
+2024-25,2025,WA,Western Australia,Horses,Euthanased,Euthanased,8,2
+2024-25,2025,ACT,Australian Capital Territory,Horses,Other,Other (incl. died in care),7,0
+2024-25,2025,NSW,New South Wales,Horses,Other,Other (incl. died in care),7,0
+2024-25,2025,NT,Northern Territory,Horses,Other,Other (incl. died in care),7,2
+2024-25,2025,QLD,Queensland,Horses,Other,Other (incl. died in care),7,0
+2024-25,2025,SA,South Australia,Horses,Other,Other (incl. died in care),7,0
+2024-25,2025,TAS,Tasmania,Horses,Other,Other (incl. died in care),7,0
+2024-25,2025,VIC,Victoria,Horses,Other,Other (incl. died in care),7,2
+2024-25,2025,WA,Western Australia,Horses,Other,Other (incl. died in care),7,0
+2024-25,2025,ACT,Australian Capital Territory,Livestock,Reclaimed,Live outcome,2,0
+2024-25,2025,NSW,New South Wales,Livestock,Reclaimed,Live outcome,2,0
+2024-25,2025,NT,Northern Territory,Livestock,Reclaimed,Live outcome,2,1
+2024-25,2025,QLD,Queensland,Livestock,Reclaimed,Live outcome,2,13
+2024-25,2025,SA,South Australia,Livestock,Reclaimed,Live outcome,2,13
+2024-25,2025,TAS,Tasmania,Livestock,Reclaimed,Live outcome,2,0
+2024-25,2025,VIC,Victoria,Livestock,Reclaimed,Live outcome,2,0
+2024-25,2025,WA,Western Australia,Livestock,Reclaimed,Live outcome,2,3
+2024-25,2025,ACT,Australian Capital Territory,Livestock,Returned,Live outcome,3,0
+2024-25,2025,NSW,New South Wales,Livestock,Returned,Live outcome,3,0
+2024-25,2025,NT,Northern Territory,Livestock,Returned,Live outcome,3,41
+2024-25,2025,QLD,Queensland,Livestock,Returned,Live outcome,3,2
+2024-25,2025,SA,South Australia,Livestock,Returned,Live outcome,3,1
+2024-25,2025,TAS,Tasmania,Livestock,Returned,Live outcome,3,0
+2024-25,2025,VIC,Victoria,Livestock,Returned,Live outcome,3,1
+2024-25,2025,WA,Western Australia,Livestock,Returned,Live outcome,3,0
+2024-25,2025,ACT,Australian Capital Territory,Livestock,Rehomed,Live outcome,1,43
+2024-25,2025,NSW,New South Wales,Livestock,Rehomed,Live outcome,1,2
+2024-25,2025,NT,Northern Territory,Livestock,Rehomed,Live outcome,1,104
+2024-25,2025,QLD,Queensland,Livestock,Rehomed,Live outcome,1,234
+2024-25,2025,SA,South Australia,Livestock,Rehomed,Live outcome,1,40
+2024-25,2025,TAS,Tasmania,Livestock,Rehomed,Live outcome,1,28
+2024-25,2025,VIC,Victoria,Livestock,Rehomed,Live outcome,1,32
+2024-25,2025,WA,Western Australia,Livestock,Rehomed,Live outcome,1,68
+2024-25,2025,ACT,Australian Capital Territory,Livestock,Currently in care,Still in care,5,7
+2024-25,2025,NSW,New South Wales,Livestock,Currently in care,Still in care,5,0
+2024-25,2025,NT,Northern Territory,Livestock,Currently in care,Still in care,5,15
+2024-25,2025,QLD,Queensland,Livestock,Currently in care,Still in care,5,32
+2024-25,2025,SA,South Australia,Livestock,Currently in care,Still in care,5,98
+2024-25,2025,TAS,Tasmania,Livestock,Currently in care,Still in care,5,26
+2024-25,2025,VIC,Victoria,Livestock,Currently in care,Still in care,5,19
+2024-25,2025,WA,Western Australia,Livestock,Currently in care,Still in care,5,5
+2024-25,2025,ACT,Australian Capital Territory,Livestock,Transferred,Transferred,6,0
+2024-25,2025,NSW,New South Wales,Livestock,Transferred,Transferred,6,0
+2024-25,2025,NT,Northern Territory,Livestock,Transferred,Transferred,6,46
+2024-25,2025,QLD,Queensland,Livestock,Transferred,Transferred,6,16
+2024-25,2025,SA,South Australia,Livestock,Transferred,Transferred,6,94
+2024-25,2025,TAS,Tasmania,Livestock,Transferred,Transferred,6,0
+2024-25,2025,VIC,Victoria,Livestock,Transferred,Transferred,6,21
+2024-25,2025,WA,Western Australia,Livestock,Transferred,Transferred,6,8
+2024-25,2025,ACT,Australian Capital Territory,Livestock,Euthanased,Euthanased,8,11
+2024-25,2025,NSW,New South Wales,Livestock,Euthanased,Euthanased,8,0
+2024-25,2025,NT,Northern Territory,Livestock,Euthanased,Euthanased,8,50
+2024-25,2025,QLD,Queensland,Livestock,Euthanased,Euthanased,8,196
+2024-25,2025,SA,South Australia,Livestock,Euthanased,Euthanased,8,26
+2024-25,2025,TAS,Tasmania,Livestock,Euthanased,Euthanased,8,2
+2024-25,2025,VIC,Victoria,Livestock,Euthanased,Euthanased,8,20
+2024-25,2025,WA,Western Australia,Livestock,Euthanased,Euthanased,8,25
+2024-25,2025,ACT,Australian Capital Territory,Livestock,Other,Other (incl. died in care),7,0
+2024-25,2025,NSW,New South Wales,Livestock,Other,Other (incl. died in care),7,0
+2024-25,2025,NT,Northern Territory,Livestock,Other,Other (incl. died in care),7,2
+2024-25,2025,QLD,Queensland,Livestock,Other,Other (incl. died in care),7,16
+2024-25,2025,SA,South Australia,Livestock,Other,Other (incl. died in care),7,7
+2024-25,2025,TAS,Tasmania,Livestock,Other,Other (incl. died in care),7,0
+2024-25,2025,VIC,Victoria,Livestock,Other,Other (incl. died in care),7,3
+2024-25,2025,WA,Western Australia,Livestock,Other,Other (incl. died in care),7,4
+2024-25,2025,ACT,Australian Capital Territory,Wildlife,Released,Live outcome,4,1
+2024-25,2025,NSW,New South Wales,Wildlife,Released,Live outcome,4,0
+2024-25,2025,NT,Northern Territory,Wildlife,Released,Live outcome,4,1
+2024-25,2025,QLD,Queensland,Wildlife,Released,Live outcome,4,2521
+2024-25,2025,SA,South Australia,Wildlife,Released,Live outcome,4,59
+2024-25,2025,TAS,Tasmania,Wildlife,Released,Live outcome,4,0
+2024-25,2025,VIC,Victoria,Wildlife,Released,Live outcome,4,13
+2024-25,2025,WA,Western Australia,Wildlife,Released,Live outcome,4,0
+2024-25,2025,ACT,Australian Capital Territory,Wildlife,Currently in care,Still in care,5,4
+2024-25,2025,NSW,New South Wales,Wildlife,Currently in care,Still in care,5,0
+2024-25,2025,NT,Northern Territory,Wildlife,Currently in care,Still in care,5,3
+2024-25,2025,QLD,Queensland,Wildlife,Currently in care,Still in care,5,172
+2024-25,2025,SA,South Australia,Wildlife,Currently in care,Still in care,5,13
+2024-25,2025,TAS,Tasmania,Wildlife,Currently in care,Still in care,5,0
+2024-25,2025,VIC,Victoria,Wildlife,Currently in care,Still in care,5,8
+2024-25,2025,WA,Western Australia,Wildlife,Currently in care,Still in care,5,0
+2024-25,2025,ACT,Australian Capital Territory,Wildlife,Transferred,Transferred,6,27
+2024-25,2025,NSW,New South Wales,Wildlife,Transferred,Transferred,6,0
+2024-25,2025,NT,Northern Territory,Wildlife,Transferred,Transferred,6,103
+2024-25,2025,QLD,Queensland,Wildlife,Transferred,Transferred,6,5591
+2024-25,2025,SA,South Australia,Wildlife,Transferred,Transferred,6,173
+2024-25,2025,TAS,Tasmania,Wildlife,Transferred,Transferred,6,0
+2024-25,2025,VIC,Victoria,Wildlife,Transferred,Transferred,6,18
+2024-25,2025,WA,Western Australia,Wildlife,Transferred,Transferred,6,0
+2024-25,2025,ACT,Australian Capital Territory,Wildlife,Euthanased,Euthanased,8,71
+2024-25,2025,NSW,New South Wales,Wildlife,Euthanased,Euthanased,8,0
+2024-25,2025,NT,Northern Territory,Wildlife,Euthanased,Euthanased,8,301
+2024-25,2025,QLD,Queensland,Wildlife,Euthanased,Euthanased,8,17307
+2024-25,2025,SA,South Australia,Wildlife,Euthanased,Euthanased,8,103
+2024-25,2025,TAS,Tasmania,Wildlife,Euthanased,Euthanased,8,0
+2024-25,2025,VIC,Victoria,Wildlife,Euthanased,Euthanased,8,239
+2024-25,2025,WA,Western Australia,Wildlife,Euthanased,Euthanased,8,0
+2024-25,2025,ACT,Australian Capital Territory,Wildlife,Other,Other (incl. died in care),7,5
+2024-25,2025,NSW,New South Wales,Wildlife,Other,Other (incl. died in care),7,0
+2024-25,2025,NT,Northern Territory,Wildlife,Other,Other (incl. died in care),7,11
+2024-25,2025,QLD,Queensland,Wildlife,Other,Other (incl. died in care),7,973
+2024-25,2025,SA,South Australia,Wildlife,Other,Other (incl. died in care),7,13
+2024-25,2025,TAS,Tasmania,Wildlife,Other,Other (incl. died in care),7,0
+2024-25,2025,VIC,Victoria,Wildlife,Other,Other (incl. died in care),7,64
+2024-25,2025,WA,Western Australia,Wildlife,Other,Other (incl. died in care),7,0
+2024-25,2025,ACT,Australian Capital Territory,Other animals,Reclaimed,Live outcome,2,19
+2024-25,2025,NSW,New South Wales,Other animals,Reclaimed,Live outcome,2,24
+2024-25,2025,NT,Northern Territory,Other animals,Reclaimed,Live outcome,2,0
+2024-25,2025,QLD,Queensland,Other animals,Reclaimed,Live outcome,2,2
+2024-25,2025,SA,South Australia,Other animals,Reclaimed,Live outcome,2,10
+2024-25,2025,TAS,Tasmania,Other animals,Reclaimed,Live outcome,2,8
+2024-25,2025,VIC,Victoria,Other animals,Reclaimed,Live outcome,2,12
+2024-25,2025,WA,Western Australia,Other animals,Reclaimed,Live outcome,2,4
+2024-25,2025,ACT,Australian Capital Territory,Other animals,Returned,Live outcome,3,8
+2024-25,2025,NSW,New South Wales,Other animals,Returned,Live outcome,3,0
+2024-25,2025,NT,Northern Territory,Other animals,Returned,Live outcome,3,215
+2024-25,2025,QLD,Queensland,Other animals,Returned,Live outcome,3,23
+2024-25,2025,SA,South Australia,Other animals,Returned,Live outcome,3,12
+2024-25,2025,TAS,Tasmania,Other animals,Returned,Live outcome,3,0
+2024-25,2025,VIC,Victoria,Other animals,Returned,Live outcome,3,7
+2024-25,2025,WA,Western Australia,Other animals,Returned,Live outcome,3,3
+2024-25,2025,ACT,Australian Capital Territory,Other animals,Rehomed,Live outcome,1,191
+2024-25,2025,NSW,New South Wales,Other animals,Rehomed,Live outcome,1,0
+2024-25,2025,NT,Northern Territory,Other animals,Rehomed,Live outcome,1,646
+2024-25,2025,QLD,Queensland,Other animals,Rehomed,Live outcome,1,652
+2024-25,2025,SA,South Australia,Other animals,Rehomed,Live outcome,1,241
+2024-25,2025,TAS,Tasmania,Other animals,Rehomed,Live outcome,1,71
+2024-25,2025,VIC,Victoria,Other animals,Rehomed,Live outcome,1,651
+2024-25,2025,WA,Western Australia,Other animals,Rehomed,Live outcome,1,269
+2024-25,2025,ACT,Australian Capital Territory,Other animals,Currently in care,Still in care,5,8
+2024-25,2025,NSW,New South Wales,Other animals,Currently in care,Still in care,5,0
+2024-25,2025,NT,Northern Territory,Other animals,Currently in care,Still in care,5,117
+2024-25,2025,QLD,Queensland,Other animals,Currently in care,Still in care,5,222
+2024-25,2025,SA,South Australia,Other animals,Currently in care,Still in care,5,226
+2024-25,2025,TAS,Tasmania,Other animals,Currently in care,Still in care,5,8
+2024-25,2025,VIC,Victoria,Other animals,Currently in care,Still in care,5,743
+2024-25,2025,WA,Western Australia,Other animals,Currently in care,Still in care,5,32
+2024-25,2025,ACT,Australian Capital Territory,Other animals,Transferred,Transferred,6,1
+2024-25,2025,NSW,New South Wales,Other animals,Transferred,Transferred,6,0
+2024-25,2025,NT,Northern Territory,Other animals,Transferred,Transferred,6,167
+2024-25,2025,QLD,Queensland,Other animals,Transferred,Transferred,6,34
+2024-25,2025,SA,South Australia,Other animals,Transferred,Transferred,6,118
+2024-25,2025,TAS,Tasmania,Other animals,Transferred,Transferred,6,0
+2024-25,2025,VIC,Victoria,Other animals,Transferred,Transferred,6,55
+2024-25,2025,WA,Western Australia,Other animals,Transferred,Transferred,6,6
+2024-25,2025,ACT,Australian Capital Territory,Other animals,Euthanased,Euthanased,8,17
+2024-25,2025,NSW,New South Wales,Other animals,Euthanased,Euthanased,8,0
+2024-25,2025,NT,Northern Territory,Other animals,Euthanased,Euthanased,8,476
+2024-25,2025,QLD,Queensland,Other animals,Euthanased,Euthanased,8,421
+2024-25,2025,SA,South Australia,Other animals,Euthanased,Euthanased,8,128
+2024-25,2025,TAS,Tasmania,Other animals,Euthanased,Euthanased,8,1
+2024-25,2025,VIC,Victoria,Other animals,Euthanased,Euthanased,8,105
+2024-25,2025,WA,Western Australia,Other animals,Euthanased,Euthanased,8,32
+2024-25,2025,ACT,Australian Capital Territory,Other animals,Other,Other (incl. died in care),7,11
+2024-25,2025,NSW,New South Wales,Other animals,Other,Other (incl. died in care),7,0
+2024-25,2025,NT,Northern Territory,Other animals,Other,Other (incl. died in care),7,54
+2024-25,2025,QLD,Queensland,Other animals,Other,Other (incl. died in care),7,94
+2024-25,2025,SA,South Australia,Other animals,Other,Other (incl. died in care),7,26
+2024-25,2025,TAS,Tasmania,Other animals,Other,Other (incl. died in care),7,0
+2024-25,2025,VIC,Victoria,Other animals,Other,Other (incl. died in care),7,40
+2024-25,2025,WA,Western Australia,Other animals,Other,Other (incl. died in care),7,11
