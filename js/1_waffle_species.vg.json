@@ -124,11 +124,11 @@
           "#3B7F2A",
           "#0085CA",
           "#F5A01A",
-          "#C9C9C9"
+          "#A1887F"
         ]
       },
       "legend": {
-        "title": null,
+        "title": "Animal type",
         "orient": "right",
         "symbolType": "square",
         "symbolSize": 160,

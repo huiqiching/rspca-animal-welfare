@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Proportional symbol map: animals received by each state's RSPCA in 2024-25. Two nested circles per state on ONE shared area scale: all animals (light blue) and dogs + cats only (navy). Raw totals belong in symbols, not a choropleth (course notes). Circles sit at each state's approximate centre.",
+  "description": "Proportional symbol map: animals taken in by each state's RSPCA in 2024-25 (raw totals, so symbols rather than a choropleth). Two nested circles on one shared area scale: a hollow circle for all animals and a filled green circle for wildlife (green = wildlife everywhere on the page). Circles sit at each state's approximate centre.",
   "width": "container",
   "height": 470,
   "projection": {
@@ -67,7 +67,7 @@
         {
           "fold": [
             "animals_received",
-            "dogs_cats_received"
+            "wildlife_received"
           ],
           "as": [
             "measure",
@@ -75,14 +75,14 @@
           ]
         },
         {
-          "calculate": "datum.measure == 'animals_received' ? 'All animals (incl. wildlife)' : 'Dogs and cats only'",
+          "calculate": "datum.measure == 'animals_received' ? 'All animals' : 'Wildlife'",
           "as": "measure_label"
         }
       ],
       "mark": {
         "type": "circle",
-        "stroke": "#FFFFFF",
-        "strokeWidth": 1,
+        "stroke": "#002133",
+        "strokeWidth": 1.2,
         "opacity": 1
       },
       "encoding": {
@@ -116,29 +116,37 @@
               40000
             ],
             "symbolFillColor": "#FFFFFF",
-            "symbolStrokeColor": "#4A5A66",
-            "orient": "bottom-left",
-            "labelExpr": "format(datum.value, ',.0f')"
+            "symbolStrokeColor": "#002133",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "labelExpr": "format(datum.value, ',.0f')",
+            "labelFontSize": 13,
+            "titleFontSize": 13
           }
         },
         "color": {
           "field": "measure_label",
           "type": "nominal",
+          "title": "Circle shows",
           "scale": {
             "domain": [
-              "All animals (incl. wildlife)",
-              "Dogs and cats only"
+              "All animals",
+              "Wildlife"
             ],
             "range": [
-              "#9FD0EA",
-              "#002133"
+              "#FFFFFF",
+              "#3B7F2A"
             ]
           },
           "legend": {
-            "title": null,
-            "orient": "top-right",
+            "orient": "bottom",
+            "direction": "horizontal",
             "symbolType": "circle",
-            "labelLimit": 260
+            "symbolStrokeColor": "#002133",
+            "symbolStrokeWidth": 1.2,
+            "symbolSize": 220,
+            "labelFontSize": 13,
+            "titleFontSize": 13
           }
         },
         "order": {
@@ -161,12 +169,6 @@
             "field": "animals",
             "type": "quantitative",
             "title": "Animals",
-            "format": ",.0f"
-          },
-          {
-            "field": "wildlife_received",
-            "type": "quantitative",
-            "title": "Of which wildlife",
             "format": ",.0f"
           }
         ]

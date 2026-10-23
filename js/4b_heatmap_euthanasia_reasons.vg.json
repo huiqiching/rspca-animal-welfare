@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Heat map (Kirk 2019: values across two categorical dimensions), two panels for dogs and cats: share of each state's euthanased animals by reason, 2024-25. Rows = states (sorted by number euthanased), columns = reasons. Single-hue blue scale plus printed percentages, so it is readable without relying on colour.",
+  "description": "Heat map (Kirk 2019), two panels for dogs and cats: share of each state's euthanased animals by reason, 2024-25. Cells are not labelled, because a heat map is for spotting patterns; exact values are in the tooltip. Single-hue slate scale.",
   "data": {
     "url": "data/rspca_euthanasia_reasons_2024_25.csv",
     "format": {
@@ -113,10 +113,10 @@
                 1
               ],
               "range": [
-                "#F1F8FC",
-                "#9FD0EA",
-                "#40A0D5",
-                "#0072B0",
+                "#EEF1F4",
+                "#C3CDD6",
+                "#8A9BAA",
+                "#4C6276",
                 "#002133"
               ]
             },
@@ -124,7 +124,10 @@
               "format": ".0%",
               "orient": "bottom",
               "direction": "horizontal",
-              "gradientLength": 240
+              "gradientLength": 320,
+              "titleLimit": 400,
+              "labelFontSize": 13,
+              "titleFontSize": 13
             }
           },
           "tooltip": [
@@ -156,31 +159,6 @@
               "format": ".0%"
             }
           ]
-        }
-      },
-      {
-        "transform": [
-          {
-            "filter": "datum.count > 0"
-          }
-        ],
-        "mark": {
-          "type": "text",
-          "fontSize": 12
-        },
-        "encoding": {
-          "text": {
-            "field": "share",
-            "type": "quantitative",
-            "format": ".0%"
-          },
-          "color": {
-            "condition": {
-              "test": "datum.share > 0.55",
-              "value": "#FFFFFF"
-            },
-            "value": "#002133"
-          }
         }
       }
     ]

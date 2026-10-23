@@ -6,19 +6,19 @@
 :root {
   /* Colours taken from the RSPCA Australia website (rspca.org.au) */
   --bg: #FFFEFC;          /* RSPCA off-white */
-  --bg-alt: #EEF6FB;      /* very light RSPCA blue band */
+  --bg-alt: #F3F5F7;      /* very light neutral slate band (no blue, so it never reads as 'cats') */
   --card: #FFFFFF;
   --ink: #002133;         /* RSPCA navy, main text */
   --ink-soft: #4A5A66;    /* secondary text */
   --rule: #DCE3E8;
-  --accent: #006BA6;      /* RSPCA blue, darkened slightly so text passes contrast checks */
-  --accent-bright: #0085CA; /* RSPCA blue, borders and decoration only */
+  --accent: #002133;      /* navy: page accents and links (category colours are reserved for animals) */
+  --accent-bright: #002133; /* navy borders and decoration */
 
   /* animal-group palette, must match the chart specs (colour-blind checked) */
   --wildlife: #3B7F2A;    /* darker RSPCA green */
   --cats: #0085CA;        /* RSPCA blue */
   --dogs: #F5A01A;        /* RSPCA amber */
-  --other: #C9C9C9;
+  --other: #A1887F;       /* taupe: 'other animals' */
 
   --heading: "Fraunces", Georgia, serif;
   --body: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
@@ -81,9 +81,9 @@ h3 { font-size: 1.2rem; font-weight: 600; }
 
 p { margin: 0 0 16px; }
 
-strong { color: var(--accent); font-weight: 700; }
+strong { color: inherit; font-weight: 700; }   /* bold only: coloured text would look like a category */
 
-a { color: var(--accent); }
+a { color: var(--accent); text-decoration: underline; }
 
 .eyebrow,
 .section-number {
@@ -105,7 +105,7 @@ a { color: var(--accent); }
 
 .hero {
   padding: 96px 0 64px;
-  background: linear-gradient(180deg, #EEF6FB 0%, var(--bg) 100%);
+  background: linear-gradient(180deg, #F3F5F7 0%, var(--bg) 100%);
   border-bottom: 1px solid var(--rule);
 }
 
@@ -211,10 +211,10 @@ h3.sub-heading.wa-intro { margin-bottom: 16px; }
 /* closing call to action */
 .closing { background: var(--ink); color: #FFFFFF; }
 .closing h2, .closing h3, .closing .section-number { color: #FFFFFF; }
-.closing .section-number { color: #9FD0EA; }
+.closing .section-number { color: #C3CDD6; }
 .closing p { color: #DCE8F0; }
 .action-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
-.action { border-top: 4px solid var(--accent-bright); padding-top: 16px; }
+.action { border-top: 4px solid #C3CDD6; padding-top: 16px; }
 @media (max-width: 860px) { .action-row { grid-template-columns: 1fr; } }
 
 /* hero facts: the three stats use exactly the same grid as the three actions in the closing

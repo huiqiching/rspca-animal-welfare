@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Slope graph (Kirk 2019: change between two points in time): share of animals euthanased in 2020-21 vs 2024-25, by group. Dogs are highlighted in colour because they are the only group whose rate rose; other groups are muted grey as context.",
+  "description": "Slope graph (Kirk 2019): share of animals put to sleep in 2020-21 vs 2024-25 by group. Each group keeps its page-wide colour; dogs are emphasised with a thicker line because theirs is the only rate that rose.",
   "width": "container",
   "height": 300,
   "padding": {
@@ -60,11 +60,21 @@
       "axis": null
     },
     "color": {
-      "condition": {
-        "test": "datum.group == 'Dogs'",
-        "value": "#F5A01A"
+      "field": "group",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Cats",
+          "Wildlife & other",
+          "Dogs"
+        ],
+        "range": [
+          "#0085CA",
+          "#3B7F2A",
+          "#F5A01A"
+        ]
       },
-      "value": "#A7B1B8"
+      "legend": null
     },
     "detail": {
       "field": "group"

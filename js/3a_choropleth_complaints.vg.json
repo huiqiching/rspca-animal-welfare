@@ -88,10 +88,10 @@
               30
             ],
             "range": [
-              "#E3F2FA",
-              "#9FD0EA",
-              "#40A0D5",
-              "#0072B0",
+              "#EEF1F4",
+              "#C3CDD6",
+              "#8A9BAA",
+              "#4C6276",
               "#002133"
             ]
           },
@@ -99,7 +99,10 @@
             "orient": "bottom",
             "direction": "horizontal",
             "titleLimit": 400,
-            "labelFontSize": 12
+            "labelFontSize": 13,
+            "title": "Cruelty complaints per 10,000 people",
+            "titleFontSize": 13,
+            "symbolSize": 220
           }
         },
         "tooltip": [

@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Line chart: animals received by the RSPCA nationally each financial year, 2020-21 to 2024-25, by animal group. Lines are labelled directly at their ends instead of using a legend (course notes: direct labelling).",
+  "description": "Line chart: animals received by the RSPCA nationally each financial year, 2020-21 to 2024-25, by animal group. Lines are labelled directly at their ends instead of using a legend (course notes: direct labelling). Group is shown by colour plus a direct label only (no redundant shape encoding).",
   "width": "container",
   "height": 280,
   "padding": {
@@ -83,23 +83,6 @@
         "opacity": 1
       },
       "encoding": {
-        "shape": {
-          "field": "group",
-          "type": "nominal",
-          "scale": {
-            "domain": [
-              "Cats",
-              "Wildlife & other",
-              "Dogs"
-            ],
-            "range": [
-              "circle",
-              "square",
-              "triangle-up"
-            ]
-          },
-          "legend": null
-        },
         "tooltip": [
           {
             "field": "group",

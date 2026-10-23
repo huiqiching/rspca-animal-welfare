@@ -75,8 +75,7 @@
     {
       "mark": {
         "type": "rect",
-        "stroke": "#FFFFFF",
-        "strokeWidth": 1
+        "strokeWidth": 1.5
       },
       "encoding": {
         "x": {
@@ -124,8 +123,8 @@
           ],
           "scale": {
             "range": [
-              "#C6E3F4",
-              "#0072B0",
+              "#DCE3E8",
+              "#002133",
               "#002133"
             ]
           },
@@ -153,7 +152,14 @@
             "title": "Share of complaints",
             "format": ".2%"
           }
-        ]
+        ],
+        "stroke": {
+          "condition": {
+            "test": "datum.stage == 'Cases proven in court'",
+            "value": "#FFFFFF"
+          },
+          "value": "transparent"
+        }
       }
     },
     {

@@ -1,58 +1,159 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Dot plot (lollipop style, course notes 4): share of animals cared for by RSPCA WA in 2024-25 that were adopted, by type of animal, sorted from highest to lowest. 'Cared for' includes animals still in care at the end of the year and those reclaimed by owners, so rates are a guide, not a full outcome breakdown. Counts are in the tooltip.",
+  "description": "Dot plot (lollipop style, course notes 4): share of animals cared for by RSPCA WA in 2024-25 that were adopted, by type of animal, sorted from highest to lowest. 'Cared for' includes animals still in care at the end of the year and those reclaimed by owners, so rates are a guide, not a full outcome breakdown. Counts are in the tooltip. Dots use the page-wide animal colours: dogs amber, cats blue, all other animals taupe.",
   "width": "container",
   "height": 300,
-  "padding": {"right": 30},
+  "padding": {
+    "right": 30
+  },
   "data": {
     "url": "data/rspcawa_care_and_adoptions_by_type_2024_25.csv",
-    "format": {"type": "csv", "parse": {"cared_for": "number", "adopted": "number"}}
+    "format": {
+      "type": "csv",
+      "parse": {
+        "cared_for": "number",
+        "adopted": "number"
+      }
+    }
   },
   "transform": [
-    {"calculate": "datum.adopted / datum.cared_for", "as": "rate"},
-    {"calculate": "replace(replace(datum.animal_type, '/puppies', ''), '/kittens', '')", "as": "animal"}
+    {
+      "calculate": "datum.adopted / datum.cared_for",
+      "as": "rate"
+    },
+    {
+      "calculate": "replace(replace(datum.animal_type, '/puppies', ''), '/kittens', '')",
+      "as": "animal"
+    }
   ],
   "encoding": {
     "y": {
       "field": "animal",
       "type": "nominal",
       "title": null,
-      "sort": {"field": "rate", "order": "descending"},
-      "axis": {"domain": false, "ticks": false, "labelFontSize": 14, "labelPadding": 8}
+      "sort": {
+        "field": "rate",
+        "order": "descending"
+      },
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 14,
+        "labelPadding": 8
+      }
     },
     "x": {
       "field": "rate",
       "type": "quantitative",
       "title": "Share of animals cared for that were adopted",
-      "scale": {"domain": [0, 1]},
-      "axis": {"format": ".0%", "tickCount": 5, "domain": false, "ticks": false}
+      "scale": {
+        "domain": [
+          0,
+          1
+        ]
+      },
+      "axis": {
+        "format": ".0%",
+        "tickCount": 5,
+        "domain": false,
+        "ticks": false
+      }
     }
   },
   "layer": [
     {
-      "mark": {"type": "rule", "strokeWidth": 2, "color": "#C6D3DB"},
-      "encoding": {"x": {"datum": 0}, "x2": {"field": "rate"}}
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 2,
+        "color": "#DCE3E8"
+      },
+      "encoding": {
+        "x": {
+          "datum": 0
+        },
+        "x2": {
+          "field": "rate"
+        }
+      }
     },
     {
-      "mark": {"type": "circle", "size": 160, "opacity": 1},
+      "mark": {
+        "type": "circle",
+        "size": 160,
+        "opacity": 1
+      },
       "encoding": {
         "color": {
-          "condition": {"test": "datum.animal == 'Dogs' || datum.animal == 'Cats'", "value": "#0072B0"},
-          "value": "#7FB8DC"
+          "field": "animal",
+          "type": "nominal",
+          "title": "Animal type",
+          "scale": {
+            "domain": [
+              "Dogs",
+              "Cats",
+              "Rabbits",
+              "Guinea pigs",
+              "Rodents",
+              "Livestock",
+              "Birds",
+              "Horses"
+            ],
+            "range": [
+              "#F5A01A",
+              "#0085CA",
+              "#A1887F",
+              "#A1887F",
+              "#A1887F",
+              "#A1887F",
+              "#A1887F",
+              "#A1887F"
+            ]
+          },
+          "legend": null
         },
         "tooltip": [
-          {"field": "animal", "type": "nominal", "title": "Animal"},
-          {"field": "cared_for", "type": "quantitative", "title": "Cared for", "format": ",.0f"},
-          {"field": "adopted", "type": "quantitative", "title": "Adopted", "format": ",.0f"},
-          {"field": "rate", "type": "quantitative", "title": "Share adopted", "format": ".0%"}
+          {
+            "field": "animal",
+            "type": "nominal",
+            "title": "Animal"
+          },
+          {
+            "field": "cared_for",
+            "type": "quantitative",
+            "title": "Cared for",
+            "format": ",.0f"
+          },
+          {
+            "field": "adopted",
+            "type": "quantitative",
+            "title": "Adopted",
+            "format": ",.0f"
+          },
+          {
+            "field": "rate",
+            "type": "quantitative",
+            "title": "Share adopted",
+            "format": ".0%"
+          }
         ]
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": 12, "fontSize": 13, "fontWeight": 600},
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 12,
+        "fontSize": 13,
+        "fontWeight": 600
+      },
       "encoding": {
-        "text": {"field": "rate", "format": ".0%"},
-        "color": {"value": "#002133"}
+        "text": {
+          "field": "rate",
+          "format": ".0%"
+        },
+        "color": {
+          "value": "#002133"
+        }
       }
     }
   ]

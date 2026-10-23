@@ -3,12 +3,19 @@
   "description": "Line chart: cruelty prosecutions finalised by the RSPCA nationally each financial year, 2019-20 to 2024-25, with every point labelled. Complaints (which include revisits of earlier complaints) are shown in the tooltip for context. The 2024-25 rise is annotated.",
   "width": "container",
   "height": 300,
-  "padding": {"top": 16, "right": 24},
+  "padding": {
+    "top": 16,
+    "right": 24
+  },
   "data": {
     "url": "data/rspca_national_complaints_prosecutions_6yr.csv",
     "format": {
       "type": "csv",
-      "parse": {"complaints_incl_revisits": "number", "prosecutions_finalised": "number", "prosecutions_per_1000_complaints": "number"}
+      "parse": {
+        "complaints_incl_revisits": "number",
+        "prosecutions_finalised": "number",
+        "prosecutions_per_1000_complaints": "number"
+      }
     }
   },
   "encoding": {
@@ -16,46 +23,123 @@
       "field": "fin_year",
       "type": "ordinal",
       "title": null,
-      "axis": {"labelAngle": 0, "domain": false, "ticks": false}
+      "axis": {
+        "labelAngle": 0,
+        "domain": false,
+        "ticks": false
+      }
     },
     "y": {
       "field": "prosecutions_finalised",
       "type": "quantitative",
       "title": "Cases taken to court",
-      "scale": {"domain": [0, 500]},
-      "axis": {"tickCount": 5, "domain": false, "ticks": false, "format": ",.0f"}
+      "scale": {
+        "domain": [
+          0,
+          500
+        ]
+      },
+      "axis": {
+        "tickCount": 5,
+        "domain": false,
+        "ticks": false,
+        "format": ",.0f"
+      }
     }
   },
   "layer": [
-    {"mark": {"type": "line", "strokeWidth": 3.5, "color": "#0072B0"}},
     {
-      "mark": {"type": "point", "filled": true, "size": 90, "opacity": 1},
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3.5,
+        "color": "#002133"
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 90,
+        "opacity": 1,
+        "color": "#002133"
+      },
       "encoding": {
-        "color": {
-          "condition": {"test": "datum.fin_year == '2024-25'", "value": "#F5A01A"},
-          "value": "#0072B0"
-        },
         "tooltip": [
-          {"field": "fin_year", "type": "ordinal", "title": "Year"},
-          {"field": "prosecutions_finalised", "type": "quantitative", "title": "Cases taken to court", "format": ",.0f"},
-          {"field": "complaints_incl_revisits", "type": "quantitative", "title": "Complaints (incl. follow-up visits)", "format": ",.0f"},
-          {"field": "prosecutions_per_1000_complaints", "type": "quantitative", "title": "Cases per 1,000 complaints", "format": ".1f"}
-        ]
+          {
+            "field": "fin_year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "prosecutions_finalised",
+            "type": "quantitative",
+            "title": "Cases taken to court",
+            "format": ",.0f"
+          },
+          {
+            "field": "complaints_incl_revisits",
+            "type": "quantitative",
+            "title": "Complaints (incl. follow-up visits)",
+            "format": ",.0f"
+          },
+          {
+            "field": "prosecutions_per_1000_complaints",
+            "type": "quantitative",
+            "title": "Cases per 1,000 complaints",
+            "format": ".1f"
+          }
+        ],
+        "size": {
+          "condition": {
+            "test": "datum.fin_year == '2024-25'",
+            "value": 200
+          },
+          "value": 90
+        }
       }
     },
     {
-      "mark": {"type": "text", "dy": -16, "fontWeight": 600, "fontSize": 13},
+      "mark": {
+        "type": "text",
+        "dy": -16,
+        "fontWeight": 600,
+        "fontSize": 13
+      },
       "encoding": {
-        "text": {"field": "prosecutions_finalised", "format": ",.0f"},
-        "color": {"value": "#002133"}
+        "text": {
+          "field": "prosecutions_finalised",
+          "format": ",.0f"
+        },
+        "color": {
+          "value": "#002133"
+        }
       }
     },
     {
-      "transform": [{"filter": "datum.fin_year == '2024-25'"}],
-      "mark": {"type": "text", "align": "right", "dx": -14, "dy": -42, "fontSize": 12, "fontStyle": "italic", "lineBreak": "\n"},
+      "transform": [
+        {
+          "filter": "datum.fin_year == '2024-25'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -14,
+        "dy": -42,
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "lineBreak": "\n"
+      },
       "encoding": {
-        "text": {"value": ["Up 54% in a single year", "after three years of decline"]},
-        "color": {"value": "#4A5A66"}
+        "text": {
+          "value": [
+            "Up 54% in a single year",
+            "after three years of decline"
+          ]
+        },
+        "color": {
+          "value": "#4A5A66"
+        }
       }
     }
   ]
