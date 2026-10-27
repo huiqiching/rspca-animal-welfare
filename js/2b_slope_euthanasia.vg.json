@@ -147,7 +147,7 @@
           "format": ".0%"
         },
         "color": {
-          "value": "#002133"
+          "value": "#2D333D"
         }
       }
     },
@@ -180,7 +180,7 @@
           "field": "label"
         },
         "color": {
-          "value": "#002133"
+          "value": "#2D333D"
         }
       }
     }

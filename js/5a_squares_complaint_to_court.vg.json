@@ -123,9 +123,9 @@
           ],
           "scale": {
             "range": [
-              "#DCE3E8",
-              "#002133",
-              "#002133"
+              "#D3D8DF",
+              "#2D333D",
+              "#2D333D"
             ]
           },
           "legend": null
@@ -211,7 +211,7 @@
           ]
         },
         "color": {
-          "value": "#002133"
+          "value": "#2D333D"
         }
       }
     },
@@ -271,7 +271,7 @@
           "field": "line"
         },
         "color": {
-          "value": "#002133"
+          "value": "#2D333D"
         }
       }
     },
@@ -326,7 +326,7 @@
           "field": "detail"
         },
         "color": {
-          "value": "#4A5A66"
+          "value": "#5D646E"
         }
       }
     },
@@ -350,7 +350,7 @@
       "mark": {
         "type": "rule",
         "strokeWidth": 1,
-        "color": "#4A5A66",
+        "color": "#5D646E",
         "strokeDash": [
           2,
           2

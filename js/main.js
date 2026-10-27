@@ -8,9 +8,32 @@
 // Passed to vegaEmbed as "config", so every chart looks consistent
 // without repeating the same settings in every spec.
 //
-// Colours come from the RSPCA Australia website (navy #002133, RSPCA blue #0085CA,
-// light blue #9FD0EA, green, amber), adjusted and checked so every pair stays
-// distinguishable for people with colour-vision deficiency.
+// Colour rule: species colours are reserved for animal categories.
+// Everything else (quantities, totals, text, axes, maps) uses one
+// desaturated slate system, so it never competes with the species colours.
+const PALETTE = {
+  species: {
+    dogs: "#F5A01A",      // amber
+    cats: "#0085CA",      // RSPCA blue
+    wildlife: "#3B7F2A",  // green
+    other: "#A1887F"      // taupe
+  },
+  waMoreReports: "#7B1FA2", // purple, WA map only
+  sequential: ["#E6EAEF", "#BDC3CC", "#939AA6", "#646B76", "#2D333D"], // light to dark
+  neutralMark: "#2D333D",   // aggregate lines, points, nodes
+  neutralSoft: "#D3D8DF",   // background shapes, lollipop stems
+  canvas: "#FFFFFF",        // chart background (cards)
+  page: "#F9FAFC",          // page background
+  mapBorder: "#FFFFFF",     // stroke between filled regions
+  basemap: "#ECEEF2",       // context land under symbols
+  noDataFill: "#FFFFFF",    // no data: white fill...
+  noDataStroke: "#8E95A0",  // ...with a dashed [3,2] outline
+  ink: "#2D333D",
+  inkSoft: "#5D646E",
+  grid: "#E7EAEE",
+  axis: "#B5BBC4"
+};
+
 const theme = {
   background: "transparent",
   font: "Source Sans 3",
@@ -21,11 +44,11 @@ const theme = {
     labelFontSize: 13,
     titleFontSize: 13,
     titleFontWeight: 600,
-    labelColor: "#4A5A66",
-    titleColor: "#4A5A66",
-    gridColor: "#E6EBEE",
-    domainColor: "#B8C2C8",
-    tickColor: "#B8C2C8"
+    labelColor: PALETTE.inkSoft,
+    titleColor: PALETTE.inkSoft,
+    gridColor: PALETTE.grid,
+    domainColor: PALETTE.axis,
+    tickColor: PALETTE.axis
   },
   legend: {
     labelFont: "Source Sans 3",
@@ -33,17 +56,18 @@ const theme = {
     labelFontSize: 13,
     titleFontSize: 13,
     titleFontWeight: 600,
-    labelColor: "#002133",
-    titleColor: "#4A5A66"
+    labelColor: PALETTE.ink,
+    titleColor: PALETTE.inkSoft
   },
   header: {
     labelFont: "Fraunces",
     labelFontSize: 15,
     labelFontWeight: 600,
-    labelColor: "#002133",
+    labelColor: PALETTE.ink,
     titleFont: "Source Sans 3"
   },
-  text: { font: "Source Sans 3", fontSize: 12, color: "#002133" }
+  range: { ramp: PALETTE.sequential },
+  text: { font: "Source Sans 3", fontSize: 12, color: PALETTE.ink }
 };
 
 const embedOptions = {

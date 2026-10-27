@@ -65,7 +65,7 @@
       "mark": {
         "type": "rule",
         "strokeWidth": 2,
-        "color": "#DCE3E8"
+        "color": "#D3D8DF"
       },
       "encoding": {
         "x": {
@@ -152,7 +152,7 @@
           "format": ".0%"
         },
         "color": {
-          "value": "#002133"
+          "value": "#2D333D"
         }
       }
     }

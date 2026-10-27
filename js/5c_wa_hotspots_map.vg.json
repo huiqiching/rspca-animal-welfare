@@ -42,7 +42,7 @@
         "font": "Fraunces",
         "fontSize": 15,
         "fontWeight": 600,
-        "color": "#002133"
+        "color": "#2D333D"
       },
       "width": 430,
       "height": 470,
@@ -74,7 +74,7 @@
           ],
           "mark": {
             "type": "geoshape",
-            "fill": "#E6E9EB",
+            "fill": "#ECEEF2",
             "stroke": "#FFFFFF"
           }
         },
@@ -119,7 +119,7 @@
           "mark": {
             "type": "geoshape",
             "fill": null,
-            "stroke": "#002133",
+            "stroke": "#2D333D",
             "strokeWidth": 1.5,
             "strokeDash": [
               4,
@@ -156,7 +156,7 @@
               "field": "t"
             },
             "color": {
-              "value": "#002133"
+              "value": "#2D333D"
             }
           }
         },
@@ -313,7 +313,7 @@
                   "field": "short"
                 },
                 "color": {
-                  "value": "#002133"
+                  "value": "#2D333D"
                 }
               }
             },
@@ -342,7 +342,7 @@
                   "field": "short"
                 },
                 "color": {
-                  "value": "#002133"
+                  "value": "#2D333D"
                 }
               }
             }
@@ -357,7 +357,7 @@
         "font": "Fraunces",
         "fontSize": 15,
         "fontWeight": 600,
-        "color": "#002133"
+        "color": "#2D333D"
       },
       "width": 430,
       "height": 470,
@@ -389,7 +389,7 @@
           ],
           "mark": {
             "type": "geoshape",
-            "fill": "#E6E9EB",
+            "fill": "#ECEEF2",
             "stroke": "#FFFFFF",
             "clip": true
           }
@@ -423,7 +423,7 @@
               "field": "t"
             },
             "color": {
-              "value": "#7A8C99"
+              "value": "#8E95A0"
             }
           }
         },
@@ -549,7 +549,7 @@
                   "field": "label"
                 },
                 "color": {
-                  "value": "#002133"
+                  "value": "#2D333D"
                 }
               }
             },
@@ -579,7 +579,7 @@
                   "field": "label"
                 },
                 "color": {
-                  "value": "#002133"
+                  "value": "#2D333D"
                 }
               }
             }

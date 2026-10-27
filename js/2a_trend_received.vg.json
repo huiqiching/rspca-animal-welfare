@@ -115,14 +115,14 @@
         "dx": 12,
         "fontWeight": 700,
         "fontSize": 13,
-        "color": "#002133"
+        "color": "#2D333D"
       },
       "encoding": {
         "text": {
           "field": "group"
         },
         "color": {
-          "value": "#002133"
+          "value": "#2D333D"
         }
       }
     },
@@ -145,7 +145,7 @@
           "value": "Cats: down 40% in five years"
         },
         "color": {
-          "value": "#4A5A66"
+          "value": "#5D646E"
         }
       }
     }

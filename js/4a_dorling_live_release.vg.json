@@ -101,7 +101,7 @@
     {
       "mark": {
         "type": "circle",
-        "stroke": "#6B8494",
+        "stroke": "#8E95A0",
         "strokeWidth": 0.8,
         "opacity": 1
       },
@@ -125,7 +125,7 @@
         "color": {
           "condition": {
             "test": "datum.state == 'NSW'",
-            "value": "#E6E9EB"
+            "value": "#FFFFFF"
           },
           "field": "live_rate",
           "type": "quantitative",
@@ -139,11 +139,11 @@
               0.95
             ],
             "range": [
-              "#EEF1F4",
-              "#C3CDD6",
-              "#8A9BAA",
-              "#4C6276",
-              "#002133"
+              "#E6EAEF",
+              "#BDC3CC",
+              "#939AA6",
+              "#646B76",
+              "#2D333D"
             ],
             "clamp": true
           },
@@ -181,7 +181,20 @@
             "title": "Left care alive",
             "format": ".1%"
           }
-        ]
+        ],
+        "strokeDash": {
+          "condition": {
+            "test": "datum.state == 'NSW'",
+            "value": [
+              3,
+              2
+            ]
+          },
+          "value": [
+            1,
+            0
+          ]
+        }
       }
     },
     {
@@ -213,7 +226,7 @@
             "test": "datum.light_text",
             "value": "#FFFFFF"
           },
-          "value": "#002133"
+          "value": "#2D333D"
         }
       }
     },
@@ -245,7 +258,7 @@
             "test": "datum.light_text",
             "value": "#FFFFFF"
           },
-          "value": "#002133"
+          "value": "#2D333D"
         }
       }
     },
@@ -268,7 +281,7 @@
           "field": "t"
         },
         "color": {
-          "value": "#4A5A66"
+          "value": "#5D646E"
         },
         "x": {
           "value": 454

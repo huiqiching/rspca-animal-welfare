@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Choropleth map: RSPCA cruelty complaints investigated per 10,000 residents by state, 2024-25 (normalised by ABS June 2025 population, as choropleths must show rates, not totals). Equal-area conic projection with standard parallels 18S and 36S. Single-hue blue classes (colour-blind safe). NT has no data because RSPCA NT has no enforcement powers. Note: an empty CSV cell is read as 0, so NT is excluded with complaints_investigated > 0.",
+  "description": "Choropleth map: RSPCA cruelty complaints investigated per 10,000 residents by state, 2024-25 (normalised by ABS June 2025 population, as choropleths must show rates, not totals). Equal-area conic projection with standard parallels 18S and 36S. Five desaturated slate classes, kept neutral so no state reads as a species colour. NT has no data (white fill, dashed outline) because RSPCA NT has no enforcement powers. Note: an empty CSV cell is read as 0, so NT is excluded with complaints_investigated > 0.",
   "width": "container",
   "height": 470,
   "projection": {
@@ -26,10 +26,19 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#E6E9EB",
-        "stroke": "#FFFFFF",
-        "strokeWidth": 1
-      }
+        "fill": "#FFFFFF",
+        "stroke": "#8E95A0",
+        "strokeWidth": 1,
+        "strokeDash": [
+          3,
+          2
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.properties.name == 'Northern Territory'"
+        }
+      ]
     },
     {
       "data": {
@@ -88,11 +97,11 @@
               30
             ],
             "range": [
-              "#EEF1F4",
-              "#C3CDD6",
-              "#8A9BAA",
-              "#4C6276",
-              "#002133"
+              "#E6EAEF",
+              "#BDC3CC",
+              "#939AA6",
+              "#646B76",
+              "#2D333D"
             ]
           },
           "legend": {
@@ -208,7 +217,7 @@
             "test": "datum.light_text",
             "value": "#FFFFFF"
           },
-          "value": "#002133"
+          "value": "#2D333D"
         }
       }
     }

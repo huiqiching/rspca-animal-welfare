@@ -26,7 +26,7 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#E6E9EB",
+        "fill": "#ECEEF2",
         "stroke": "#FFFFFF",
         "strokeWidth": 1
       }
@@ -81,7 +81,7 @@
       ],
       "mark": {
         "type": "circle",
-        "stroke": "#002133",
+        "stroke": "#2D333D",
         "strokeWidth": 1.2,
         "opacity": 1
       },
@@ -116,7 +116,7 @@
               40000
             ],
             "symbolFillColor": "#FFFFFF",
-            "symbolStrokeColor": "#002133",
+            "symbolStrokeColor": "#2D333D",
             "orient": "bottom",
             "direction": "horizontal",
             "labelExpr": "format(datum.value, ',.0f')",
@@ -142,7 +142,7 @@
             "orient": "bottom",
             "direction": "horizontal",
             "symbolType": "circle",
-            "symbolStrokeColor": "#002133",
+            "symbolStrokeColor": "#2D333D",
             "symbolStrokeWidth": 1.2,
             "symbolSize": 220,
             "labelFontSize": 13,
@@ -235,7 +235,7 @@
           "field": "label"
         },
         "color": {
-          "value": "#002133"
+          "value": "#2D333D"
         }
       }
     }

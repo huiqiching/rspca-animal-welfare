@@ -4,20 +4,36 @@
    ===================================================================== */
 
 :root {
-  /* Colours taken from the RSPCA Australia website (rspca.org.au) */
-  --bg: #FFFEFC;          /* RSPCA off-white */
-  --bg-alt: #F3F5F7;      /* very light neutral slate band (no blue, so it never reads as 'cats') */
-  --card: #FFFFFF;
-  --ink: #002133;         /* RSPCA navy, main text */
-  --ink-soft: #4A5A66;    /* secondary text */
-  --rule: #DCE3E8;
-  --accent: #002133;      /* navy: page accents and links (category colours are reserved for animals) */
-  --accent-bright: #002133; /* navy borders and decoration */
+  /* ---- Neutral system: desaturated slate (OKLCH hue ~260, chroma <= 0.02).
+     Used for every general / aggregate metric, text and decoration.
+     Species colours below are NEVER used for anything else. ---- */
+  --slate-1: #E6EAEF;     /* sequential step 1 (lowest)  */
+  --slate-2: #BDC3CC;     /* sequential step 2           */
+  --slate-3: #939AA6;     /* sequential step 3           */
+  --slate-4: #646B76;     /* sequential step 4           */
+  --slate-5: #2D333D;     /* sequential step 5 (highest), also main ink */
 
-  /* animal-group palette, must match the chart specs (colour-blind checked) */
-  --wildlife: #3B7F2A;    /* darker RSPCA green */
+  --bg: #F9FAFC;          /* page background */
+  --bg-alt: #F3F4F7;      /* alternate section band */
+  --card: #FFFFFF;        /* chart canvas */
+  --ink: #2D333D;         /* main text = slate-5 */
+  --ink-soft: #5D646E;    /* secondary text, axis labels */
+  --rule: #DCE0E5;        /* card borders, dividers */
+  --accent: #2D333D;      /* links and accent bars (no hue, so never mistaken for cats) */
+  --accent-bright: #2D333D;
+
+  /* Map + chart utility colours (must match js/main.js PALETTE) */
+  --map-border: #FFFFFF;  /* stroke between filled regions */
+  --basemap: #ECEEF2;     /* context land under symbols */
+  --nodata-fill: #FFFFFF; /* no data: white fill ... */
+  --nodata-stroke: #8E95A0; /* ... with a dashed outline */
+  --grid: #E7EAEE;
+  --axis: #B5BBC4;
+
+  /* Species palette: reserved for animal categories only (colour-blind checked) */
+  --wildlife: #3B7F2A;    /* green */
   --cats: #0085CA;        /* RSPCA blue */
-  --dogs: #F5A01A;        /* RSPCA amber */
+  --dogs: #F5A01A;        /* amber */
   --other: #A1887F;       /* taupe: 'other animals' */
 
   --heading: "Fraunces", Georgia, serif;
@@ -105,7 +121,7 @@ a { color: var(--accent); text-decoration: underline; }
 
 .hero {
   padding: 96px 0 64px;
-  background: linear-gradient(180deg, #F3F5F7 0%, var(--bg) 100%);
+  background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
   border-bottom: 1px solid var(--rule);
 }
 
@@ -211,10 +227,10 @@ h3.sub-heading.wa-intro { margin-bottom: 16px; }
 /* closing call to action */
 .closing { background: var(--ink); color: #FFFFFF; }
 .closing h2, .closing h3, .closing .section-number { color: #FFFFFF; }
-.closing .section-number { color: #C3CDD6; }
-.closing p { color: #DCE8F0; }
+.closing .section-number { color: var(--slate-2); }
+.closing p { color: var(--slate-1); }
 .action-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
-.action { border-top: 4px solid #C3CDD6; padding-top: 16px; }
+.action { border-top: 4px solid var(--slate-2); padding-top: 16px; }
 @media (max-width: 860px) { .action-row { grid-template-columns: 1fr; } }
 
 /* hero facts: the three stats use exactly the same grid as the three actions in the closing

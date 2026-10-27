@@ -377,7 +377,7 @@
               "field": "label"
             },
             "color": {
-              "value": "#002133"
+              "value": "#2D333D"
             }
           }
         }
@@ -463,9 +463,9 @@
             "color": {
               "condition": {
                 "test": "datum.target == 'Put to sleep'",
-                "value": "#4A5A66"
+                "value": "#646B76"
               },
-              "value": "#002133"
+              "value": "#2D333D"
             }
           }
         },
@@ -510,7 +510,7 @@
               "field": "label"
             },
             "color": {
-              "value": "#002133"
+              "value": "#2D333D"
             }
           }
         }
