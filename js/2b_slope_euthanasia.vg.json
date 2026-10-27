@@ -2,10 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Slope graph (Kirk 2019): share of animals put to sleep in 2020-21 vs 2024-25 by group. Each group keeps its page-wide colour; dogs are emphasised with a thicker line because theirs is the only rate that rose.",
   "width": "container",
-  "height": 340,
+  "height": 280,
   "padding": {
-    "left": 10,
-    "right": 170,
+    "left": 44,
+    "right": 8,
     "top": 10
   },
   "data": {
@@ -29,23 +29,39 @@
     {
       "calculate": "datum.pct_euthanased / 100",
       "as": "rate"
+    },
+    {
+      "calculate": "datum.fin_year == '2020-21' ? 0 : 1",
+      "as": "xpos"
     }
   ],
   "encoding": {
     "x": {
-      "field": "fin_year",
-      "type": "ordinal",
+      "field": "xpos",
+      "type": "quantitative",
       "title": null,
       "scale": {
-        "padding": 0.12
+        "domain": [
+          -0.04,
+          1.62
+        ],
+        "nice": false,
+        "zero": false
       },
       "axis": {
+        "values": [
+          0,
+          1
+        ],
+        "labelExpr": "datum.value == 0 ? '2020-21' : '2024-25'",
+        "orient": "top",
         "labelAngle": 0,
         "domain": false,
         "ticks": false,
+        "grid": false,
         "labelFontWeight": 700,
-        "orient": "top",
-        "labelFontSize": 15
+        "labelFontSize": 15,
+        "labelPadding": 10
       }
     },
     "y": {
