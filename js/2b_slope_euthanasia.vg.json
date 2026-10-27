@@ -2,10 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Slope graph (Kirk 2019): share of animals put to sleep in 2020-21 vs 2024-25 by group. Each group keeps its page-wide colour; dogs are emphasised with a thicker line because theirs is the only rate that rose.",
   "width": "container",
-  "height": 300,
+  "height": 340,
   "padding": {
     "left": 10,
-    "right": 160,
+    "right": 170,
     "top": 10
   },
   "data": {
@@ -37,14 +37,15 @@
       "type": "ordinal",
       "title": null,
       "scale": {
-        "padding": 0.4
+        "padding": 0.12
       },
       "axis": {
         "labelAngle": 0,
         "domain": false,
         "ticks": false,
         "labelFontWeight": 700,
-        "orient": "top"
+        "orient": "top",
+        "labelFontSize": 15
       }
     },
     "y": {
@@ -99,7 +100,7 @@
       "mark": {
         "type": "point",
         "filled": true,
-        "size": 90,
+        "size": 130,
         "opacity": 1
       },
       "encoding": {
@@ -139,7 +140,8 @@
         "type": "text",
         "align": "right",
         "dx": -12,
-        "fontWeight": 600
+        "fontWeight": 600,
+        "fontSize": 15
       },
       "encoding": {
         "text": {
@@ -169,7 +171,8 @@
         "type": "text",
         "align": "left",
         "dx": 12,
-        "fontWeight": 600
+        "fontWeight": 600,
+        "fontSize": 15
       },
       "encoding": {
         "y": {

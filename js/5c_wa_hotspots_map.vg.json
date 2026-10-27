@@ -131,15 +131,15 @@
           "data": {
             "values": [
               {
-                "lon": 116.4,
-                "lat": -31.3,
+                "lon": 115.9,
+                "lat": -30.75,
                 "t": "Perth and Peel (see right)"
               }
             ]
           },
           "mark": {
             "type": "text",
-            "align": "left",
+            "align": "center",
             "fontSize": 12,
             "fontStyle": "italic"
           },
@@ -272,18 +272,18 @@
             },
             {
               "calculate": "datum.lga == 'Greater Geraldton' ? 'Geraldton' : datum.lga == 'Kalgoorlie-Boulder' ? 'Kalgoorlie' : datum.lga",
-              "as": "short"
+              "as": "label"
             },
             {
-              "calculate": "datum.lga == 'Busselton' ? 'right' : datum.lga == 'Bunbury' ? 'right' : 'left'",
+              "calculate": "indexof(['Bunbury','Busselton'], datum.lga) >= 0 ? 'left' : 'right'",
               "as": "side"
             },
             {
-              "calculate": "datum.lga == 'Bunbury' ? datum.approx_lon - 0.5 : datum.lga == 'Busselton' ? datum.approx_lon - 0.5 : datum.approx_lon + 0.5",
+              "calculate": "datum.approx_lon + (datum.side == 'left' ? -1 : 1) * ((sqrt(2400 * datum.reports / 700) / 2) + 6) / 19",
               "as": "label_lon"
             },
             {
-              "calculate": "datum.lga == 'Busselton' ? datum.approx_lat - 0.3 : datum.lga == 'Bunbury' ? datum.approx_lat + 0.15 : datum.approx_lat",
+              "calculate": "datum.lga == 'Bunbury' ? datum.approx_lat + 0.5 : datum.lga == 'Busselton' ? datum.approx_lat - 0.6 : datum.approx_lat",
               "as": "label_lat"
             }
           ],
@@ -296,7 +296,8 @@
               ],
               "mark": {
                 "type": "text",
-                "align": "left",
+                "align": "right",
+                "baseline": "middle",
                 "fontSize": 12,
                 "fontWeight": 600
               },
@@ -310,7 +311,7 @@
                   "type": "quantitative"
                 },
                 "text": {
-                  "field": "short"
+                  "field": "label"
                 },
                 "color": {
                   "value": "#2D333D"
@@ -325,7 +326,8 @@
               ],
               "mark": {
                 "type": "text",
-                "align": "right",
+                "align": "left",
+                "baseline": "middle",
                 "fontSize": 12,
                 "fontWeight": 600
               },
@@ -339,7 +341,7 @@
                   "type": "quantitative"
                 },
                 "text": {
-                  "field": "short"
+                  "field": "label"
                 },
                 "color": {
                   "value": "#2D333D"
@@ -398,8 +400,8 @@
           "data": {
             "values": [
               {
-                "lon": 115.5,
-                "lat": -31.95,
+                "lon": 115.45,
+                "lat": -32.0,
                 "t": "Indian Ocean"
               }
             ]
@@ -514,12 +516,20 @@
               "filter": "datum.area_type == 'Metropolitan'"
             },
             {
-              "calculate": "indexof(['Joondalup', 'Stirling', 'Cockburn', 'Rockingham', 'Mandurah'], datum.lga) >= 0 ? 'left' : 'right'",
+              "calculate": "indexof(['Joondalup','Stirling','Cockburn','Rockingham','Mandurah','Belmont'], datum.lga) >= 0 ? 'left' : 'right'",
               "as": "side"
             },
             {
               "calculate": "datum.lga + ' ' + format(datum.reports, ',.0f')",
               "as": "label"
+            },
+            {
+              "calculate": "datum.approx_lon + (datum.side == 'left' ? -1 : 1) * ((sqrt(2400 * datum.reports / 700) / 2) + 7) / 300",
+              "as": "label_lon"
+            },
+            {
+              "calculate": "datum.lga == 'Belmont' ? datum.approx_lat - 0.02 : datum.approx_lat",
+              "as": "label_lat"
             }
           ],
           "layer": [
@@ -532,17 +542,17 @@
               "mark": {
                 "type": "text",
                 "align": "right",
-                "dx": -22,
+                "baseline": "middle",
                 "fontSize": 12,
                 "fontWeight": 600
               },
               "encoding": {
                 "longitude": {
-                  "field": "approx_lon",
+                  "field": "label_lon",
                   "type": "quantitative"
                 },
                 "latitude": {
-                  "field": "approx_lat",
+                  "field": "label_lat",
                   "type": "quantitative"
                 },
                 "text": {
@@ -562,17 +572,17 @@
               "mark": {
                 "type": "text",
                 "align": "left",
-                "dx": 24,
+                "baseline": "middle",
                 "fontSize": 12,
                 "fontWeight": 600
               },
               "encoding": {
                 "longitude": {
-                  "field": "approx_lon",
+                  "field": "label_lon",
                   "type": "quantitative"
                 },
                 "latitude": {
-                  "field": "approx_lat",
+                  "field": "label_lat",
                   "type": "quantitative"
                 },
                 "text": {

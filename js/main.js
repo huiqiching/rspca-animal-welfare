@@ -44,6 +44,7 @@ const theme = {
     labelFontSize: 13,
     titleFontSize: 13,
     titleFontWeight: 600,
+    titlePadding: 12,
     labelColor: PALETTE.inkSoft,
     titleColor: PALETTE.inkSoft,
     gridColor: PALETTE.grid,

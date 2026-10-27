@@ -121,7 +121,10 @@
             "direction": "horizontal",
             "labelExpr": "format(datum.value, ',.0f')",
             "labelFontSize": 13,
-            "titleFontSize": 13
+            "titleFontSize": 13,
+            "columnPadding": 22,
+            "padding": 14,
+            "titlePadding": 8
           }
         },
         "color": {
@@ -146,7 +149,10 @@
             "symbolStrokeWidth": 1.2,
             "symbolSize": 220,
             "labelFontSize": 13,
-            "titleFontSize": 13
+            "titleFontSize": 13,
+            "columnPadding": 22,
+            "padding": 14,
+            "titlePadding": 8
           }
         },
         "order": {
@@ -209,7 +215,7 @@
           "as": "label_lon"
         },
         {
-          "calculate": "datum.state == 'ACT' ? -36.4 : datum.state == 'QLD' ? datum.centroid_lat - 5.2 : datum.centroid_lat - 2.8",
+          "calculate": "datum.state == 'ACT' ? -36.4 : datum.state == 'NSW' ? datum.centroid_lat + 1.7 : datum.state == 'QLD' ? datum.centroid_lat - 5.2 : datum.centroid_lat - 2.8",
           "as": "label_lat"
         },
         {
