@@ -83,6 +83,7 @@ const charts = [
   ["#slope_euthanasia", "js/2b_slope_euthanasia.vg.json"],
   ["#map_complaints",   "js/3a_choropleth_complaints.vg.json"],
   ["#map_received",     "js/3b_symbol_map_received.vg.json"],
+  ["#change_received",  "js/3c_change_received.vg.json"],
   ["#dorling_live",     "js/4a_dorling_live_release.vg.json"],
   ["#heatmap_reasons",  "js/4b_heatmap_euthanasia_reasons.vg.json"],
   ["#squares_court",    "js/5a_squares_complaint_to_court.vg.json"],

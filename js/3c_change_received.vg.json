@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Diverging lollipop chart: percentage change in animals taken in by each state's RSPCA between 2023-24 and 2024-25 (all animal types). Neutral slate marks because this is an aggregate, not a species. Zero line marks 'no change'. Sorted from biggest rise to biggest fall.",
+  "width": "container",
+  "height": 300,
+  "padding": {"left": 4, "right": 40},
+  "data": {
+    "url": "data/rspca_state_species_received_2023_2025.csv",
+    "format": {"type": "csv", "parse": {"received": "number"}}
+  },
+  "transform": [
+    {"aggregate": [{"op": "sum", "field": "received", "as": "total"}], "groupby": ["state", "state_name", "fin_year"]},
+    {"pivot": "fin_year", "value": "total", "groupby": ["state", "state_name"]},
+    {"calculate": "datum['2023-24']", "as": "before"},
+    {"calculate": "datum['2024-25']", "as": "after"},
+    {"calculate": "(datum.after - datum.before) / datum.before", "as": "change"},
+    {"calculate": "(datum.change > 0 ? '+' : '') + format(datum.change, '.0%')", "as": "change_label"}
+  ],
+  "encoding": {
+    "y": {
+      "field": "state_name", "type": "nominal", "title": null,
+      "sort": {"field": "change", "order": "descending"},
+      "axis": {"domain": false, "ticks": false, "labelFontSize": 13, "labelPadding": 8, "labelLimit": 240}
+    },
+    "x": {
+      "field": "change", "type": "quantitative",
+      "title": "Change in animals taken in, 2023-24 to 2024-25",
+      "scale": {"domain": [-0.4, 0.2]},
+      "axis": {"format": "+.0%", "tickCount": 6, "domain": false, "ticks": false}
+    }
+  },
+  "layer": [
+    {"mark": {"type": "rule", "color": "#939AA6", "strokeWidth": 1.5}, "encoding": {"x": {"datum": 0}, "y": null}},
+    {"mark": {"type": "rule", "strokeWidth": 2.5, "color": "#BDC3CC"}, "encoding": {"x": {"datum": 0}, "x2": {"field": "change"}}},
+    {
+      "mark": {"type": "circle", "size": 150, "opacity": 1, "color": "#2D333D"},
+      "encoding": {
+        "tooltip": [
+          {"field": "state_name", "type": "nominal", "title": "State"},
+          {"field": "before", "type": "quantitative", "title": "Taken in, 2023-24", "format": ",.0f"},
+          {"field": "after", "type": "quantitative", "title": "Taken in, 2024-25", "format": ",.0f"},
+          {"field": "change", "type": "quantitative", "title": "Change", "format": "+.1%"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.change >= 0"}],
+      "mark": {"type": "text", "align": "left", "dx": 12, "fontSize": 13, "fontWeight": 600},
+      "encoding": {"text": {"field": "change_label"}, "color": {"value": "#2D333D"}}
+    },
+    {
+      "transform": [{"filter": "datum.change < 0"}],
+      "mark": {"type": "text", "align": "right", "dx": -12, "fontSize": 13, "fontWeight": 600},
+      "encoding": {"text": {"field": "change_label"}, "color": {"value": "#2D333D"}}
+    }
+  ]
+}
